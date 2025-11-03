@@ -10,7 +10,7 @@ export default class extends BaseSchema {
 
       // Attributs
       table.string('username', 16).notNullable().unique()
-      table.string('email', 254).notNullable().unique()
+      table.string('email', 320).notNullable().unique()
       table.string('password').notNullable()
       table.string('firstname').notNullable()
       table.string('lastname').notNullable()
