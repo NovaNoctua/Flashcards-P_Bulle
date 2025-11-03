@@ -5,7 +5,10 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
+      // PK
       table.increments('id')
+
+      // FK
       table
         .integer('tokenable_id')
         .notNullable()
@@ -14,6 +17,7 @@ export default class extends BaseSchema {
         .inTable('users')
         .onDelete('CASCADE')
 
+      // Attributs
       table.string('type').notNullable()
       table.string('name').nullable()
       table.string('hash').notNullable()

@@ -11,7 +11,6 @@ export default class extends BaseSchema {
       // Attributes
       table.string('title').notNullable().unique()
       table.boolean('is_published').notNullable()
-
       table.timestamp('created_at')
       table.timestamp('updated_at')
 
@@ -23,7 +22,6 @@ export default class extends BaseSchema {
         .references('id')
         .inTable('users')
         .onDelete('CASCADE')
-        .unique()
         .notNullable()
     })
   }

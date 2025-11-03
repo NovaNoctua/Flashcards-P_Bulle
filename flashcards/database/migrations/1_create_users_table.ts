@@ -5,14 +5,16 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
+      // PK
       table.increments('id').notNullable()
+
+      // Attributs
       table.string('username', 16).notNullable().unique()
       table.string('email', 254).notNullable().unique()
       table.string('password').notNullable()
       table.string('firstname').notNullable()
       table.string('lastname').notNullable()
       table.string('profile_picture_path').nullable()
-
       table.timestamp('created_at').notNullable()
       table.timestamp('updated_at').nullable()
     })
