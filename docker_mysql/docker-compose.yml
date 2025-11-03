@@ -1,8 +1,8 @@
 # Creation date : 22.08.2022
 # Created by : CSR
 # Description : Create two containers (one for the db and the other one of the administration front-end)
-# 
-version: '3.3'
+#
+version: "3.3"
 
 services:
   db:
@@ -12,6 +12,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: db_user
       MYSQL_PASSWORD: db_user_pass
+      MYSQL_DATABASE: p_flashcards
     restart: always
     ports:
       - "6033:3306"
