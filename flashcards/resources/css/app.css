@@ -8,6 +8,8 @@ html,
 body {
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -15,6 +17,7 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  background-color: lightgrey;
 }
 
 #header-left {
@@ -23,6 +26,40 @@ header {
   align-items: center;
 }
 
+#header-title,
+.header-link,
+#header-btn {
+  color: black;
+  font-size: 1.5em;
+  text-decoration: none;
+  margin-right: 30px;
+}
+
 #header-title {
+  margin-left: 15px;
+  margin-right: 30px;
   font-size: 2em;
+}
+
+.header-link:hover {
+  color: purple;
+}
+
+#header-btn {
+  background-color: purple;
+  color: white;
+  margin-top: 15px;
+  padding: 10px 15px;
+  border: white 1px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+#header-btn:hover {
+  background-color: white;
+  cursor: pointer;
+  color: purple;
+}
+
+footer {
 }
