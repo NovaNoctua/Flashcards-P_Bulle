@@ -10,8 +10,9 @@
 import AuthController from '#controllers/auth_controller'
 import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
+import DecksController from '#controllers/decks_controller'
 
-router.on('/').render('pages/home')
+router.get('/', [DecksController, 'index']).as('home')
 
 router
   .group(() => {
