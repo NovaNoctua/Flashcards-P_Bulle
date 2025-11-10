@@ -1,3 +1,4 @@
+import Card from '#models/card'
 import Deck from '#models/deck'
 import type { HttpContext } from '@adonisjs/core/http'
 import { dd } from '@adonisjs/core/services/dumper'
@@ -30,7 +31,19 @@ export default class DecksController {
   /**
    * Show individual record
    */
-  async show({ params }: HttpContext) {}
+  async show({ params, view }: HttpContext) {
+    const deck = await Deck.query()
+      .where('id', params.id)
+      .preload('user', (builder) => {
+        builder.select('username')
+      })
+      .first()
+    const cards = await Card.query().where('deckId', params.id).orderBy('id', 'asc')
+
+    const data = [deck, cards]
+
+    return view.render('pages/decks/show.edge', { title: "Flashcards d'un deck", data })
+  }
 
   /**
    * Edit individual record

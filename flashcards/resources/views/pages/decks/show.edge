@@ -1,0 +1,9 @@
+@component('components/layout', {title: title})
+<h2>{{data[0].title}} par {{data[0].user.username}}</h2>
+<div>
+  @each((card, index) in data[1])
+  <p>{{card.question}}</p>
+  <p>{{card.answer}}</p>
+  @end
+</div>
+@endcomponent

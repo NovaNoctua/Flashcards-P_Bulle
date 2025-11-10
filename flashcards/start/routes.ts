@@ -13,6 +13,7 @@ import { middleware } from './kernel.js'
 import DecksController from '#controllers/decks_controller'
 
 router.get('/', [DecksController, 'index']).as('home')
+router.get('/decks/:id/show', [DecksController, 'show']).as('deck.show')
 
 router
   .group(() => {
