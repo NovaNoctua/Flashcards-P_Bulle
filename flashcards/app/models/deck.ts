@@ -15,6 +15,9 @@ export default class Deck extends BaseModel {
   @column()
   declare isPublished: boolean
 
+  @column()
+  declare userId: number
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
