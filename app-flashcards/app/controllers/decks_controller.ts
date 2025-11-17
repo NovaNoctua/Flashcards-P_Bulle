@@ -31,7 +31,7 @@ export default class DecksController {
   async store({ request, session, response }: HttpContext) {
     const { title, isPublished } = await request.validateUsing(deckValidator)
 
-    const userId = 1
+    const userId = session.get('auth_web')
 
     await Deck.create({ title, isPublished, userId })
 
@@ -75,7 +75,7 @@ export default class DecksController {
   async update({ params, request, session, response }: HttpContext) {
     const { title, isPublished } = await request.validateUsing(deckValidator)
 
-    const userId = 1
+    const userId = session.get('auth_web')
 
     const deck = await Deck.findOrFail(params.id)
 

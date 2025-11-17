@@ -22,6 +22,16 @@ export default class extends BaseSeeder {
         isAdmin: false,
         profilePicturePath: './',
       },
+      {
+        id: 321321,
+        username: 'Nova2',
+        email: 'nova2@gmail.com',
+        password: 'nova2nova2',
+        firstname: 'Maël',
+        lastname: 'Naudet',
+        isAdmin: true,
+        profilePicturePath: './',
+      },
     ])
   }
 }
