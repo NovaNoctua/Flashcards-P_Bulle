@@ -27,3 +27,4 @@ router.post('/deck/:id/update', [DecksController, 'update']).as('deck.update')
 
 // AUTHENTICATION
 router.post('/login', [AuthController, 'handleLogin']).as('auth.handleLogin')
+router.post('/logout', [AuthController, 'handleLogout']).as('auth.handleLogout')
