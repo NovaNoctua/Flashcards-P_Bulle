@@ -15,6 +15,11 @@ import DecksController from '#controllers/decks_controller'
 router.get('/', [DecksController, 'index']).as('home')
 router.get('/decks/:id/show', [DecksController, 'show']).as('deck.show')
 
+router.delete('/decks/:id/destroy', [DecksController, 'destroy']).as('deck.destroy')
+
+router.get('deck/add', [DecksController, 'create']).as('deck.create')
+router.post('deck/add', [DecksController, 'store']).as('deck.store')
+
 router
   .group(() => {
     router.post('register', [AuthController, 'register'])

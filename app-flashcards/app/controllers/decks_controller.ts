@@ -1,7 +1,7 @@
 import Card from '#models/card'
 import Deck from '#models/deck'
+import { deckValidator } from '#validators/deck'
 import type { HttpContext } from '@adonisjs/core/http'
-import { dd } from '@adonisjs/core/services/dumper'
 
 export default class DecksController {
   /**
@@ -21,12 +21,24 @@ export default class DecksController {
   /**
    * Display form to create a new record
    */
-  async create({}: HttpContext) {}
+  async create({ view }: HttpContext) {
+    return view.render('pages/decks/create', { title: "Ajout d'un deck" })
+  }
 
   /**
    * Handle form submission for the create action
    */
-  async store({ request }: HttpContext) {}
+  async store({ request, session, response }: HttpContext) {
+    const { title, isPublished } = await request.validateUsing(deckValidator)
+
+    const userId = 1
+
+    await Deck.create({ title, isPublished, userId })
+
+    session.flash('success', 'Le nouveau deck a été ajouté avec succès !')
+
+    return response.redirect().toRoute('home')
+  }
 
   /**
    * Show individual record
@@ -63,7 +75,7 @@ export default class DecksController {
 
     await deck.delete()
 
-    session.flash('success', "L'enseignant a été supprimé avec succès !")
+    session.flash('success', 'Le deck a été supprimé avec succès !')
 
     return response.redirect().toRoute('home')
   }

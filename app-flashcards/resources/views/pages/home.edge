@@ -6,9 +6,12 @@
     <h2 class="deck-card-title">{{deck.title}}</h2>
     <p class="deck-card-user">{{deck.user.username}}</p>
   </a>
-  {{-- <form action="{{route('deck.destroy', {id: deck.index}) }}?_method=DELETE" method="POST" style="display: inline">
+  <form action="{{route('deck.destroy', {id: deck.id}) }}?_method=DELETE" method="POST" style="display: inline">
     {{ csrfField()}}
-  </form> --}}
+    <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+      DELETE
+    </button>
+  </form>
   @end
 
 </div>

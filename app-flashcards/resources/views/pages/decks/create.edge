@@ -1,0 +1,23 @@
+@component('components/layout', {title: title})
+<h3>
+  {{title}}
+</h3>
+<form action="{{route('deck.store')}}" method="post">
+  {{csrfField()}}
+  <div class="field">
+    @!component('components/input', {name: 'title', label: 'Titre', value: old('title')})
+  </div>
+  <div class="radio">
+    @!component('components/radio', {
+    name: 'isPublished',
+    value: old('isPublished'),
+    options: [
+    {value: true, label: 'Oui'},
+    {value: false, label: 'Non'}
+    ]
+    })
+  </div>
+
+  <button type="submit">Enregistrer</button>
+</form>
+@endcomponent
