@@ -7,9 +7,19 @@ export default class extends BaseSeeder {
       {
         username: 'Nova',
         email: 'nova@gmail.com',
-        password: 'nova',
+        password: 'novanova',
         firstname: 'Maël',
         lastname: 'Naudet',
+        isAdmin: true,
+        profilePicturePath: './',
+      },
+      {
+        username: 'Owoox',
+        email: 'owoox@gmail.com',
+        password: 'owooxowoox',
+        firstname: 'Alexandre',
+        lastname: 'Jaeghers',
+        isAdmin: false,
         profilePicturePath: './',
       },
     ])

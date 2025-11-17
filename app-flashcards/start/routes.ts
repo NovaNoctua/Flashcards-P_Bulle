@@ -26,10 +26,4 @@ router.get('/deck/:id/edit', [DecksController, 'edit']).as('deck.edit')
 router.post('/deck/:id/update', [DecksController, 'update']).as('deck.update')
 
 // AUTHENTICATION
-router
-  .group(() => {
-    router.post('register', [AuthController, 'register'])
-    router.post('login', [AuthController, 'login'])
-    router.post('logout', [AuthController, 'logout']).use(middleware.auth())
-  })
-  .prefix('users')
+router.post('/login', [AuthController, 'handleLogin']).as('auth.handleLogin')

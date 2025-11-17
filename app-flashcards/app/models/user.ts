@@ -26,6 +26,9 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare password: string
 
   @column()
+  declare isAdmin: boolean
+
+  @column()
   declare firstname: string
 
   @column()

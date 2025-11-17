@@ -12,6 +12,7 @@ export default class extends BaseSchema {
       table.string('username', 16).notNullable().unique()
       table.string('email', 320).notNullable().unique()
       table.string('password').notNullable()
+      table.boolean('is_admin').notNullable().defaultTo(false)
       table.string('firstname').notNullable()
       table.string('lastname').notNullable()
       table.string('profile_picture_path').nullable()
