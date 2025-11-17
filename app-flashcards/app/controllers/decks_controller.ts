@@ -58,5 +58,13 @@ export default class DecksController {
   /**
    * Delete record
    */
-  async destroy({ params }: HttpContext) {}
+  async destroy({ params, session, response }: HttpContext) {
+    const deck = await Deck.findOrFail(params.id)
+
+    await deck.delete()
+
+    session.flash('success', "L'enseignant a été supprimé avec succès !")
+
+    return response.redirect().toRoute('home')
+  }
 }
