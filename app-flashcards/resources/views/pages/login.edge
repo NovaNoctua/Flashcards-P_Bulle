@@ -1,0 +1,8 @@
+@component('components/layout', { title: 'Se connecter' })
+<form action="{{route('auth.handleLogin') }}" method="post">
+  {{csrfField()}}
+  @!component('components/input', {name: 'username', label: "Nom d'utilisateur"})
+  @!component('components/input', {name: 'password', label: 'Mot de passe', type: 'password'})
+  <button type="submit" class="btn btn-logic">Se connecter</button>
+</form>
+@endcomponent

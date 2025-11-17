@@ -1,6 +1,8 @@
 @component('components/layout', {title: title})
 <h2>{{data[0].title}} par {{data[0].user.username}}</h2>
+@if(auth.user.isAdmin)
 <a href="{{{route('deck.edit', {id: data[0].id})}}}">MODIFIER</a>
+@endif
 <div>
   @each((card, index) in data[1])
   <p>{{card.question}}</p>
