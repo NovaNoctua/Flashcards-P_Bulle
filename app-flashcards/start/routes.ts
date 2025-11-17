@@ -13,6 +13,8 @@ import { middleware } from './kernel.js'
 import DecksController from '#controllers/decks_controller'
 
 router.get('/', [DecksController, 'index']).as('home')
+
+// CRUD DECKS
 router.get('/decks/:id/show', [DecksController, 'show']).as('deck.show')
 
 router.delete('/decks/:id/destroy', [DecksController, 'destroy']).as('deck.destroy')
@@ -20,6 +22,10 @@ router.delete('/decks/:id/destroy', [DecksController, 'destroy']).as('deck.destr
 router.get('deck/add', [DecksController, 'create']).as('deck.create')
 router.post('deck/add', [DecksController, 'store']).as('deck.store')
 
+router.get('/deck/:id/edit', [DecksController, 'edit']).as('deck.edit')
+router.post('/deck/:id/update', [DecksController, 'update']).as('deck.update')
+
+// AUTHENTICATION
 router
   .group(() => {
     router.post('register', [AuthController, 'register'])

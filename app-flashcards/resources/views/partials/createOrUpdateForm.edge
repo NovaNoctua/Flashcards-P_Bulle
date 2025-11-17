@@ -1,0 +1,19 @@
+{{csrfField()}}
+<div class="field">
+  @!component('components/input', {name: 'title', label: 'Titre', value: old('title') || (deck ? deck.title :
+  '')})
+</div>
+<div class="radio">
+  @!component('components/radio', {
+  name: 'isPublished',
+  // value: deck.isPublished,
+  value: old('isPublished') || (deck ? deck.isPublished : ''),
+  options: [
+  {value: 1, label: 'Oui'},
+  {value: 0, label: 'Non'}
+  ]
+  })
+
+</div>
+
+<button type="submit">Enregistrer</button>
