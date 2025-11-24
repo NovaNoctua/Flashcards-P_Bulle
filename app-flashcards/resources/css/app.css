@@ -13,6 +13,7 @@ body {
   min-height: 100vh;
 }
 
+/* ---------- HEADER ------------- */
 header {
   display: flex;
   flex-direction: row;
@@ -62,6 +63,7 @@ header {
   color: #9966cc;
 }
 
+/* ------------ FOOTER ------------ */
 footer {
   color: white;
   font-size: 1em;
@@ -71,6 +73,7 @@ footer {
   background-color: #9966cc;
 }
 
+/* ------------ HOMEPAGE ------------ */
 main {
   flex: 1;
 }
@@ -117,4 +120,17 @@ main {
 .deck-card-user {
   font-size: 1rem;
   color: white;
+}
+
+/* ----------- LOGINPAGE ----------- */
+#form-div,
+#form-login {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+}
+
+#form-div {
+  margin-top: 100px;
 }
