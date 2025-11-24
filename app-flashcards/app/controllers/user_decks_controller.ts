@@ -5,8 +5,10 @@ export default class UserDecksController {
   /**
    * Display a list of resource
    */
-  async index({ view, params }: HttpContext) {
-    const decks = await Deck.query().where('userId', params.user_id).orderBy('updatedAt', 'desc')
+  async index({ view, session }: HttpContext) {
+    const decks = await Deck.query()
+      .where('userId', session.get('auth_web'))
+      .orderBy('updatedAt', 'desc')
 
     return view.render('pages/decks/user', { decks, title: 'Liste de vos decks' })
   }

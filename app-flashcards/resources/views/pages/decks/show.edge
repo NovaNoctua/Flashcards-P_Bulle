@@ -1,7 +1,7 @@
 @component('components/layout', {title: title})
 <h2>{{data[0].title}} par {{data[0].user.username}}</h2>
 @if(auth.isAuthenticated)
-@if(auth.user.isAdmin)
+@if(auth.user.isAdmin || auth.user.id === data[0].user.id)
 <a href="{{route('deck.edit', {id: data[0].id})}}">Modifier le nom du deck</a>
 <a href="{{route('cards.create', {id: data[0].id})}}">Ajouter une carte</a>
 <form action="{{route('deck.destroy', {id: data[0].id}) }}?_method=DELETE" method="POST" style="display: inline">
@@ -18,7 +18,11 @@
       <th>#</th>
       <th>Question</th>
       <th>Réponse</th>
+      @if(auth.isAuthenticated)
+      @if(auth.user.isAdmin || auth.user.id === data[0].user.id)
       <th>Action</th>
+      @endif
+      @endif
     </tr>
   </thead>
   <tbody>
@@ -27,6 +31,8 @@
       <td>{{index + 1}}</td>
       <td>{{card.question}}</td>
       <td>{{card.answer}}</td>
+      @if(auth.isAuthenticated)
+      @if(auth.user.isAdmin || auth.user.id === data[0].user.id)
       <td class="container-options"><a
           href="{{{route('cards.edit', {deck_id: data[0].id, card_id: data[1][index].id})}}}">Modifier</a>
         <form action="{{route('cards.destroy', {deck_id: data[0].id, card_id: data[1][index].id})}}?_method=DELETE"
@@ -35,6 +41,8 @@
           <button type="submit">Supprimer</button>
         </form>
       </td>
+      @endif
+      @endif
     </tr>
     @end
   </tbody>

@@ -5,18 +5,18 @@ export default class extends BaseSeeder {
   async run() {
     await User.createMany([
       {
-        username: 'Nova',
+        username: 'mael',
         email: 'nova@gmail.com',
-        password: 'novanova',
+        password: 'testtest',
         firstname: 'Maël',
         lastname: 'Naudet',
         isAdmin: true,
         profilePicturePath: './',
       },
       {
-        username: 'Owoox',
+        username: 'rayan',
         email: 'owoox@gmail.com',
-        password: 'owooxowoox',
+        password: 'testtest',
         firstname: 'Alexandre',
         lastname: 'Jaeghers',
         isAdmin: false,
@@ -24,12 +24,12 @@ export default class extends BaseSeeder {
       },
       {
         id: 321321,
-        username: 'Nova2',
+        username: 'brendan',
         email: 'nova2@gmail.com',
-        password: 'nova2nova2',
+        password: 'testtest',
         firstname: 'Maël',
         lastname: 'Naudet',
-        isAdmin: true,
+        isAdmin: false,
         profilePicturePath: './',
       },
     ])

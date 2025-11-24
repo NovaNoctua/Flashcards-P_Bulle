@@ -79,8 +79,7 @@ export default class DecksController {
 
     const userId = session.get('auth_web')
 
-    const deck = await Deck.findOrFail(params.id)
-
+    const deck = await Deck.findOrFail(params.id ? params.id : params.deck_id)
     if (deck) {
       await deck.merge({ title, isPublished, userId }).save()
     }
