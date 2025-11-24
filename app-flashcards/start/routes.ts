@@ -13,6 +13,7 @@ import { middleware } from './kernel.js'
 import DecksController from '#controllers/decks_controller'
 import { HttpContext } from '@adonisjs/core/http'
 import CardsController from '#controllers/cards_controller'
+import UserDecksController from '#controllers/user_decks_controller'
 
 // CRUD DECKS
 // Create
@@ -42,6 +43,12 @@ router
   .as('deck.destroy')
   .use(middleware.auth())
   .use(middleware.ensureAdmin())
+
+// All user's decks
+router
+  .get('/users/:user_id/decks', [UserDecksController, 'index'])
+  .as('userDecks.index')
+  .use(middleware.auth())
 
 // CARDS
 // Create

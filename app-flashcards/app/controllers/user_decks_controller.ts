@@ -1,0 +1,43 @@
+import Deck from '#models/deck'
+import type { HttpContext } from '@adonisjs/core/http'
+
+export default class UserDecksController {
+  /**
+   * Display a list of resource
+   */
+  async index({ view, params }: HttpContext) {
+    const decks = await Deck.query().where('userId', params.user_id).orderBy('updatedAt', 'desc')
+
+    return view.render('pages/decks/user', { decks, title: 'Liste de vos decks' })
+  }
+
+  /**
+   * Display form to create a new record
+   */
+  async create({}: HttpContext) {}
+
+  /**
+   * Handle form submission for the create action
+   */
+  async store({ request }: HttpContext) {}
+
+  /**
+   * Show individual record
+   */
+  async show({ params }: HttpContext) {}
+
+  /**
+   * Edit individual record
+   */
+  async edit({ params }: HttpContext) {}
+
+  /**
+   * Handle form submission for the edit action
+   */
+  async update({ params, request }: HttpContext) {}
+
+  /**
+   * Delete record
+   */
+  async destroy({ params }: HttpContext) {}
+}

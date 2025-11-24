@@ -28,7 +28,7 @@ export default class DecksController {
   /**
    * Handle form submission for the create action
    */
-  async store({ request, session, response, view }: HttpContext) {
+  async store({ request, session, response }: HttpContext) {
     const { title, isPublished } = await request.validateUsing(deckValidator)
 
     const userId = session.get('auth_web')
@@ -100,6 +100,6 @@ export default class DecksController {
 
     session.flash('success', 'Le deck a été supprimé avec succès !')
 
-    return response.redirect().toRoute('home')
+    return response.redirect().toRoute('userDecks.index', { user_id: session.get('auth_web') })
   }
 }

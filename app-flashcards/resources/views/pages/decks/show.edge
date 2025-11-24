@@ -1,8 +1,14 @@
 @component('components/layout', {title: title})
 <h2>{{data[0].title}} par {{data[0].user.username}}</h2>
 @if(auth.user.isAdmin)
-<a href="{{{route('deck.edit', {id: data[0].id})}}}">Modifier le nom du deck</a>
-<a href="{{{route('cards.create', {id: data[0].id})}}}">Ajouter une carte</a>
+<a href="{{route('deck.edit', {id: data[0].id})}}">Modifier le nom du deck</a>
+<a href="{{route('cards.create', {id: data[0].id})}}">Ajouter une carte</a>
+<form action="{{route('deck.destroy', {id: data[0].id}) }}?_method=DELETE" method="POST" style="display: inline">
+  {{ csrfField()}}
+  <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
+    DELETE
+  </button>
+</form>
 @endif
 <table>
   <thead>

@@ -2,7 +2,12 @@
 <header>
   <nav id="header-nav">
     <a href="{{route('home')}}" id="header-title">FlashCards</a>
-    <a href="#" class="header-link">Voir la liste de mes Decks</a>
+    @if(!auth.isAuthenticated)
+    <a href="{{route('login')}}" class="header-link">Voir la liste de mes decks</a>
+    @else
+    <a href="{{route('userDecks.index', {user_id: session.get('auth_web')})}}" class="header-link">Voir la liste de mes
+      decks</a>
+    @end
     <a href="{{route('deck.create')}}" class="header-link">Créer un nouveau Deck</a>
   </nav>
   <div class="login-container">
