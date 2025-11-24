@@ -1,7 +1,7 @@
 @component('components/layout', {title: title})
-<h2>Ajouter des cartes</h2>
+<h2>Ajouter une carte</h2>
 <h3>Deck : {{deck.title}}</h3>
-<form action="{{route(`cards.store`, deck)}}" method="post">
+<form action="{{route(`cards.store`, {id: deck.id})}}" method="post">
   {{csrfField()}}
   <div class="field">
     @!component('components/input', {name: 'question', label: 'Question', value: ''})

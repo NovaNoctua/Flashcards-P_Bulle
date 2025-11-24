@@ -25,9 +25,9 @@ export default class CardsController {
 
     const deckId = params.id
 
-    const card = await Card.create({ deckId, question, answer })
+    await Card.create({ deckId, question, answer })
 
-    return response.ok(card)
+    return response.redirect().toRoute('deck.show', { id: deckId })
   }
 
   /**
