@@ -28,16 +28,18 @@ export default class DecksController {
   /**
    * Handle form submission for the create action
    */
-  async store({ request, session, response }: HttpContext) {
+  async store({ request, session, response, view }: HttpContext) {
     const { title, isPublished } = await request.validateUsing(deckValidator)
 
     const userId = session.get('auth_web')
 
-    await Deck.create({ title, isPublished, userId })
+    const deck = await Deck.create({ title, isPublished, userId })
 
-    session.flash('success', 'Le nouveau deck a été ajouté avec succès !')
+    // session.flash('success', 'Le nouveau deck a été ajouté avec succès !')
 
-    return response.redirect().toRoute('home')
+    // return view.render(`/deck/${deck.id}/cards/add`, { title: 'Ajouter dec cartes', deck })
+    // return response.redirect(`/deck/${deck.id}/cards/add`)
+    return response.redirect().toRoute('cards.create', deck)
   }
 
   /**

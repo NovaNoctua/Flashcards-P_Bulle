@@ -1,0 +1,15 @@
+@component('components/layout', {title: title})
+<h2>Ajouter des cartes</h2>
+<h3>Deck : {{deck.title}}</h3>
+<form action="{{route(`cards.store`, deck)}}" method="post">
+  {{csrfField()}}
+  <div class="field">
+    @!component('components/input', {name: 'question', label: 'Question', value: ''})
+  </div>
+  <div class="field">
+    @!component('components/input', { name: 'answer', label: 'Réponse', value: '' })
+  </div>
+
+  <button type="Submit">Enregistrer</button>
+</form>
+@endcomponent

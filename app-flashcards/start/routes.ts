@@ -12,19 +12,14 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 import DecksController from '#controllers/decks_controller'
 import { HttpContext } from '@adonisjs/core/http'
+import CardsController from '#controllers/cards_controller'
 
 // CRUD DECKS
 // Create
-router
-  .get('deck/add', [DecksController, 'create'])
-  .as('deck.create')
-  .use(middleware.auth())
-  .use(middleware.ensureAdmin())
-router
-  .post('deck/add', [DecksController, 'store'])
-  .as('deck.store')
-  .use(middleware.auth())
-  .use(middleware.ensureAdmin())
+router.get('deck/add', [DecksController, 'create']).as('deck.create').use(middleware.auth())
+// .use(middleware.ensureAdmin())
+router.post('deck/add', [DecksController, 'store']).as('deck.store').use(middleware.auth())
+// .use(middleware.ensureAdmin())
 
 // Read
 router.get('/', [DecksController, 'index']).as('home')
@@ -47,6 +42,17 @@ router
   .as('deck.destroy')
   .use(middleware.auth())
   .use(middleware.ensureAdmin())
+
+// CARDS
+// Create
+router
+  .get('deck/:id/cards/add', [CardsController, 'create'])
+  .as('cards.create')
+  .use(middleware.auth())
+router
+  .post('deck/:id/cards/add', [CardsController, 'store'])
+  .as('cards.store')
+  .use(middleware.auth())
 
 // AUTHENTICATION
 router
