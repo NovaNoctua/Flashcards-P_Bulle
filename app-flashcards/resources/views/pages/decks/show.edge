@@ -20,8 +20,13 @@
       <td>{{card.question}}</td>
       <td>{{card.answer}}</td>
       <td class="container-options"><a
-          href="{{{route('cards.edit', {deck_id: data[0].id, card_id: data[1][index].id})}}}">Modifier</a><a
-          href="#">Supprimer</a></td>
+          href="{{{route('cards.edit', {deck_id: data[0].id, card_id: data[1][index].id})}}}">Modifier</a>
+        <form action="{{route('cards.destroy', {deck_id: data[0].id, card_id: data[1][index].id})}}?_method=DELETE"
+          method="POST">
+          {{csrfField()}}
+          <button type="submit">Supprimer</button>
+        </form>
+      </td>
     </tr>
     @end
   </tbody>
