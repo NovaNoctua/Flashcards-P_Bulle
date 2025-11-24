@@ -1,6 +1,6 @@
 @component('components/layout', {title: title})
 <h3>{{title}}</h3>
 <form action="{{route('deck.store')}}" method="post">
-  @include('partials/createOrUpdateForm')
+  @include('partials/decksForm')
 </form>
 @endcomponent

@@ -19,7 +19,9 @@
       <td>{{index + 1}}</td>
       <td>{{card.question}}</td>
       <td>{{card.answer}}</td>
-      <td class="container-options"><a href="#">Modifier</a><a href="#">Supprimer</a></td>
+      <td class="container-options"><a
+          href="{{{route('cards.edit', {deck_id: data[0].id, card_id: data[1][index].id})}}}">Modifier</a><a
+          href="#">Supprimer</a></td>
     </tr>
     @end
   </tbody>

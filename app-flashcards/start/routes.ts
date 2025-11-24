@@ -16,9 +16,9 @@ import CardsController from '#controllers/cards_controller'
 
 // CRUD DECKS
 // Create
-router.get('deck/add', [DecksController, 'create']).as('deck.create').use(middleware.auth())
+router.get('decks/add', [DecksController, 'create']).as('deck.create').use(middleware.auth())
 // .use(middleware.ensureAdmin())
-router.post('deck/add', [DecksController, 'store']).as('deck.store').use(middleware.auth())
+router.post('decks/add', [DecksController, 'store']).as('deck.store').use(middleware.auth())
 // .use(middleware.ensureAdmin())
 
 // Read
@@ -27,12 +27,12 @@ router.get('/decks/:id/show', [DecksController, 'show']).as('deck.show')
 
 // Update
 router
-  .get('/deck/:id/edit', [DecksController, 'edit'])
+  .get('/decks/:id/edit', [DecksController, 'edit'])
   .as('deck.edit')
   .use(middleware.auth())
   .use(middleware.ensureAdmin())
 router
-  .post('/deck/:id/update', [DecksController, 'update'])
+  .post('/decks/:id/update', [DecksController, 'update'])
   .as('deck.update')
   .use(middleware.auth())
 
@@ -46,12 +46,28 @@ router
 // CARDS
 // Create
 router
-  .get('deck/:id/cards/add', [CardsController, 'create'])
+  .get('decks/:id/cards/add', [CardsController, 'create'])
   .as('cards.create')
   .use(middleware.auth())
 router
-  .post('deck/:id/cards/add', [CardsController, 'store'])
+  .post('decks/:id/cards/add', [CardsController, 'store'])
   .as('cards.store')
+  .use(middleware.auth())
+
+// Update
+router
+  .get('/decks/:deck_id/cards/:card_id/edit', [CardsController, 'edit'])
+  .as('cards.edit')
+  .use(middleware.auth())
+router
+  .post('/decks/:deck_id/cards/:card_id/edit', [CardsController, 'update'])
+  .as('cards.update')
+  .use(middleware.auth())
+
+// Destroy
+router
+  .delete('/decks/:deck_id/cards/:card_id/destroy', [CardsController, 'destroy'])
+  .as('cards.destroy')
   .use(middleware.auth())
 
 // AUTHENTICATION
