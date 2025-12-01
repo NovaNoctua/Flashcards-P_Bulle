@@ -77,10 +77,9 @@ export default class DecksController {
   async update({ params, request, session, response }: HttpContext) {
     const { title } = await request.validateUsing(deckValidator)
 
-    const userId = session.get('auth_web')
-
     const deck = await Deck.findOrFail(params.id ? params.id : params.deck_id)
 
+    const userId = deck.userId
     const isPublished = deck.isPublished
 
     if (deck) {
@@ -89,7 +88,7 @@ export default class DecksController {
 
     session.flash('success', 'Le deck a été mis à jour avec succès !')
 
-    return response.redirect().toRoute('userDecks.index', { user_id: session.get('auth_web') })
+    return response.redirect().toRoute('deck.show', { id: deck.id })
   }
 
   async publish({ params, session, response }: HttpContext) {

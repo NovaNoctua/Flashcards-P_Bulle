@@ -13,7 +13,7 @@ export default class EnsureUserMiddleware {
       const deck = await Deck.findOrFail(params.id ? params.id : params.deck_id)
       const userId = deck.userId
       const isAuthenticated = await auth.check()
-      if (!isAuthenticated || auth.user?.id != userId) {
+      if (!isAuthenticated || (auth.user?.id != userId && !auth.user?.isAdmin)) {
         session.flash(
           'error',
           "Vous devez avoir les droits admin ou être l'utilisateur en question pour accéder à cette page"

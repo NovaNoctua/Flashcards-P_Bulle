@@ -14,7 +14,6 @@ import DecksController from '#controllers/decks_controller'
 import { HttpContext } from '@adonisjs/core/http'
 import CardsController from '#controllers/cards_controller'
 import UserDecksController from '#controllers/user_decks_controller'
-import Deck from '#models/deck'
 
 // CRUD DECKS
 // Create
