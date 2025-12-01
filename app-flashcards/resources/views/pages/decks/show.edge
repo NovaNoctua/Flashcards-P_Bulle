@@ -2,6 +2,10 @@
 <h2>{{data[0].title}} par {{data[0].user.username}}</h2>
 @if(auth.isAuthenticated)
 @if(auth.user.isAdmin || auth.user.id === data[0].user.id)
+<form action="{{route('deck.publish', {id: data[0].id})}}?_method=PUT" method="POST" style="display: inline">
+  {{csrfField()}}
+  <button type="submit">{{data[0].isPublished ? 'Dépublier' : 'Publier'}}</button>
+</form>
 <a href="{{route('deck.edit', {id: data[0].id})}}">Modifier le nom du deck</a>
 <a href="{{route('cards.create', {id: data[0].id})}}">Ajouter une carte</a>
 <form action="{{route('deck.destroy', {id: data[0].id}) }}?_method=DELETE" method="POST" style="display: inline">

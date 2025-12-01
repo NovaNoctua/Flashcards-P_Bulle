@@ -1,6 +1,5 @@
 import Card from '#models/card'
 import Deck from '#models/deck'
-import User from '#models/user'
 import { deckValidator } from '#validators/deck'
 import type { HttpContext } from '@adonisjs/core/http'
 
@@ -57,13 +56,6 @@ export default class DecksController {
       return response.redirect().toRoute('home')
     }
 
-    // const user = await User.query().where('id', session.get('auth_web')).first()
-
-    // if (!deck.isPublished && user?.id !== session.get('auth_web') && !user?.isAdmin) {
-    //   session.flash('error', "Vous n'avez pas accès à ce deck.")
-    //   return response.redirect().toRoute('home')
-    // }
-
     const cards = await Card.query().where('deckId', params.id).orderBy('id', 'asc')
 
     const data = [deck, cards]
@@ -115,6 +107,8 @@ export default class DecksController {
       'success',
       isPublished ? 'Le deck a été publié avec succès.' : 'Le deck a été mis en privé avec succès.'
     )
+
+    return response.redirect().back()
 
     return response.redirect().toRoute('userDecks.index', { user_id: session.get('auth_web') })
   }

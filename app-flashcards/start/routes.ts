@@ -31,26 +31,23 @@ router
 router
   .get('/decks/:id/edit', [DecksController, 'edit'])
   .as('deck.edit')
-  .use(middleware.auth())
   .use(middleware.ensureUser())
 router
   .post('/decks/:id/update', [DecksController, 'update'])
   .as('deck.update')
-  .use(middleware.auth())
   .use(middleware.ensureUser())
 
 // Delete
 router
   .delete('/decks/:id/destroy', [DecksController, 'destroy'])
   .as('deck.destroy')
-  .use(middleware.auth())
   .use(middleware.ensureUser())
 
 // Publish deck
 router
   .put('/decks/:id/publish', [DecksController, 'publish'])
   .as('deck.publish')
-  .use(middleware.auth())
+  .use(middleware.ensureUser())
 
 // All user's decks
 router
@@ -63,31 +60,26 @@ router
 router
   .get('decks/:id/cards/add', [CardsController, 'create'])
   .as('cards.create')
-  .use(middleware.auth())
   .use(middleware.ensureUser())
 router
   .post('decks/:id/cards/add', [CardsController, 'store'])
   .as('cards.store')
-  .use(middleware.auth())
   .use(middleware.ensureUser())
 
 // Update
 router
   .get('/decks/:deck_id/cards/:card_id/edit', [CardsController, 'edit'])
   .as('cards.edit')
-  .use(middleware.auth())
   .use(middleware.ensureUser())
 router
   .post('/decks/:deck_id/cards/:card_id/edit', [CardsController, 'update'])
   .as('cards.update')
-  .use(middleware.auth())
   .use(middleware.ensureUser())
 
 // Destroy
 router
   .delete('/decks/:deck_id/cards/:card_id/destroy', [CardsController, 'destroy'])
   .as('cards.destroy')
-  .use(middleware.auth())
   .use(middleware.ensureUser())
 
 // AUTHENTICATION
