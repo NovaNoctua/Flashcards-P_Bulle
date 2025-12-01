@@ -8,7 +8,7 @@ export default class UserDecksController {
   async index({ view, session }: HttpContext) {
     const decks = await Deck.query()
       .where('userId', session.get('auth_web'))
-      .orderBy('updatedAt', 'desc')
+      .orderBy('createdAt', 'asc')
 
     return view.render('pages/decks/user', { decks, title: 'Liste de vos decks' })
   }

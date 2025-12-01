@@ -29,11 +29,11 @@ export default class DecksController {
    * Handle form submission for the create action
    */
   async store({ request, session, response }: HttpContext) {
-    const { title, isPublished } = await request.validateUsing(deckValidator)
+    const { title } = await request.validateUsing(deckValidator)
 
     const userId = session.get('auth_web')
 
-    const deck = await Deck.create({ title, isPublished, userId })
+    const deck = await Deck.create({ title, isPublished: false, userId })
 
     // session.flash('success', 'Le nouveau deck a été ajouté avec succès !')
 
@@ -75,11 +75,14 @@ export default class DecksController {
    * Handle form submission for the edit action
    */
   async update({ params, request, session, response }: HttpContext) {
-    const { title, isPublished } = await request.validateUsing(deckValidator)
+    const { title } = await request.validateUsing(deckValidator)
 
     const userId = session.get('auth_web')
 
     const deck = await Deck.findOrFail(params.id ? params.id : params.deck_id)
+
+    const isPublished = deck.isPublished
+
     if (deck) {
       await deck.merge({ title, isPublished, userId }).save()
     }
