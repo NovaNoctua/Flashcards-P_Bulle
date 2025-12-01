@@ -14,6 +14,7 @@ import DecksController from '#controllers/decks_controller'
 import { HttpContext } from '@adonisjs/core/http'
 import CardsController from '#controllers/cards_controller'
 import UserDecksController from '#controllers/user_decks_controller'
+import Deck from '#models/deck'
 
 // CRUD DECKS
 // Create
@@ -33,6 +34,13 @@ router
 router
   .post('/decks/:id/update', [DecksController, 'update'])
   .as('deck.update')
+  .use(middleware.auth())
+  .use(middleware.ensureUser())
+
+// Publish deck
+router
+  .put('/decks/:id/publish', [DecksController, 'publish'])
+  .as('deck.publish')
   .use(middleware.auth())
   .use(middleware.ensureUser())
 

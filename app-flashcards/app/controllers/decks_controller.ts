@@ -89,7 +89,23 @@ export default class DecksController {
 
     session.flash('success', 'Le deck a été mis à jour avec succès !')
 
-    return response.redirect().toRoute('home')
+    return response.redirect().toRoute('userDecks.index', { user_id: session.get('auth_web') })
+  }
+
+  async publish({ params, session, response }: HttpContext) {
+    const deck = await Deck.findOrFail(params.id)
+    let { title, isPublished, userId } = deck
+
+    isPublished = !isPublished
+
+    await deck.merge({ title, isPublished, userId }).save()
+
+    session.flash(
+      'success',
+      isPublished ? 'Le deck a été publié avec succès.' : 'Le deck a été mis en privé avec succès.'
+    )
+
+    return response.redirect().toRoute('userDecks.index', { user_id: session.get('auth_web') })
   }
 
   /**
