@@ -24,7 +24,7 @@ export default class PlayDecksController {
       deckId: deck.id,
       cardIndex: 0,
       side: 'question',
-      responses: { right: 0, wrong: 0 },
+      stats: { right: 0, wrong: 0 },
     })
 
     return view.render('pages/decks/play.edge', {
@@ -45,11 +45,18 @@ export default class PlayDecksController {
 
     const card = cards[game.cardIndex]
 
-    return {
-      side: game.side,
-      question: card?.question,
-      answer: card?.answer,
-      index: game.cardIndex,
+    if (card) {
+      return {
+        side: game.side,
+        question: card?.question,
+        answer: card?.answer,
+        index: game.cardIndex,
+        stats: game.stats,
+      }
+    } else {
+      return {
+        finish: true,
+      }
     }
   }
 
@@ -64,9 +71,17 @@ export default class PlayDecksController {
     return { side: game.side }
   }
 
-  async next({ session }: HttpContext) {
+  async next({ request, session }: HttpContext) {
     const game = session.get('game')
     if (!game) return { error: 'No game' }
+
+    const isRight = request.input('right') === true
+
+    if (isRight) {
+      game.stats.right++
+    } else {
+      game.stats.wrong++
+    }
 
     game.cardIndex++
     game.side = 'question'

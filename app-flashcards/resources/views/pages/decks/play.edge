@@ -14,7 +14,7 @@
   Astuce : cliquez sur la carte ou appuyez sur <strong>Espace</strong> pour la retourner
 </p>
 
-<div id="play-corrections"></div>
+<p id="stats"></p>
 
 <div>
   <button onclick="answer(true)">J'ai eu juste</button>
@@ -25,16 +25,17 @@
 <script>
   let currentSide = 'question'
 
-
-
   async function loadCard() {
     const res = await fetch('{{ route("deck.current", {id: deck.id}) }}')
     const data = await res.json()
 
-    console.log(data)
-
     if (data.error) {
       alert('Erreur : partie inexistante')
+      return
+    }
+
+    if (data.finish) {
+      finishGame()
       return
     }
 
@@ -50,6 +51,8 @@
       document.getElementById('card-title').innerText = 'Réponse'
       document.getElementById('card-content').innerText = data.answer
     }
+
+    document.getElementById('stats').innerHTML = `Juste : ${data.stats.right}. Faux : ${data.stats.wrong}`
   }
 
   async function flipCard() {
@@ -83,6 +86,10 @@
       flipCard()
     }
   })
+
+  function finishGame() {
+    alert('COUCOU')
+  }
 
   loadCard()
 </script>
