@@ -14,8 +14,9 @@ import DecksController from '#controllers/decks_controller'
 import { HttpContext } from '@adonisjs/core/http'
 import CardsController from '#controllers/cards_controller'
 import UserDecksController from '#controllers/user_decks_controller'
+import PlayDecksController from '#controllers/play_decks_controller'
 
-// DECKS
+// DECKS ------------------------------
 // Create
 router.get('decks/add', [DecksController, 'create']).as('deck.create').use(middleware.auth())
 router.post('decks/add', [DecksController, 'store']).as('deck.store').use(middleware.auth())
@@ -55,6 +56,31 @@ router
   .as('userDecks.index')
   .use(middleware.auth())
 
+// PLAY DECK --------------------------
+router
+  .get('/decks/:id/play', [PlayDecksController, 'play'])
+  .as('deck.play')
+  .use(middleware.auth())
+  .use(middleware.ensurePublished())
+
+router
+  .get('/deck/:id/play/current', [PlayDecksController, 'currentCard'])
+  .as('deck.current')
+  .use(middleware.auth())
+  .use(middleware.ensurePublished())
+
+router
+  .get('/decks/:id/play/flip', [PlayDecksController, 'flip'])
+  .as('deck.flip')
+  .use(middleware.auth())
+  .use(middleware.ensurePublished())
+
+router
+  .post('/decks/:id/play/next', [PlayDecksController, 'next'])
+  .as('deck.next')
+  .use(middleware.auth())
+  .use(middleware.ensurePublished())
+
 // CARDS
 // Create
 router
@@ -92,8 +118,8 @@ router.post('/login', [AuthController, 'handleLogin']).as('auth.handleLogin')
 router.post('/logout', [AuthController, 'handleLogout']).as('auth.handleLogout')
 
 // ERRORS
-router
-  .get('/error', ({ view }: HttpContext) => {
-    return view.render('pages/errors/not_found')
-  })
-  .as('error.notFound')
+// router
+//   .get('/error', ({ view }: HttpContext) => {
+//     return view.render('pages/errors/not_found')
+//   })
+//   .as('error.notFound')

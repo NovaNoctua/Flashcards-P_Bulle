@@ -26,7 +26,7 @@
         </form>
         <a href="{{route('deck.show', {id: deck.id})}}">Voir la liste des cartes</a>
         <a href="{{route('cards.create', {id: deck.id})}}">Créer une nouvelle carte</a>
-        <a href="#">Jouer</a>
+        <a href="{{route('deck.play', {id: deck.id})}}">Jouer</a>
         <form action="{{route('deck.publish', {id: deck.id})}}?_method=PUT" method="POST">
           {{csrfField()}}
           <button type="submit">{{deck.isPublished ? 'Dépublier' : 'Publier'}}</button>

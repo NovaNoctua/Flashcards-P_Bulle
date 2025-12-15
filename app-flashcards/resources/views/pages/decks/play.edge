@@ -1,0 +1,90 @@
+@component('components/layout', { title: title })
+<meta name="csrf-token" content="{{ csrfToken }}">
+
+<h2>{{ deck.title }}</h2>
+
+<p id="progress">Chargement…</p>
+
+<div id="card" onclick="flipCard()">
+  <h3 id="card-title"></h3>
+  <p id="card-content"></p>
+</div>
+
+<p>
+  Astuce : cliquez sur la carte ou appuyez sur <strong>Espace</strong> pour la retourner
+</p>
+
+<div id="play-corrections"></div>
+
+<div>
+  <button onclick="answer(true)">J'ai eu juste</button>
+  <button onclick="answer(false)">Je me suis trompé</button>
+  <button onclick="restart()">Recommencer</button>
+</div>
+
+<script>
+  let currentSide = 'question'
+
+
+
+  async function loadCard() {
+    const res = await fetch('{{ route("deck.current", {id: deck.id}) }}')
+    const data = await res.json()
+
+    console.log(data)
+
+    if (data.error) {
+      alert('Erreur : partie inexistante')
+      return
+    }
+
+    currentSide = data.side
+
+    document.getElementById('progress').innerText =
+      `Carte ${data.index + 1}`
+
+    if (data.side === 'question') {
+      document.getElementById('card-title').innerText = 'Question'
+      document.getElementById('card-content').innerText = data.question
+    } else {
+      document.getElementById('card-title').innerText = 'Réponse'
+      document.getElementById('card-content').innerText = data.answer
+    }
+  }
+
+  async function flipCard() {
+    console.log('flipping')
+    await fetch('{{ route("deck.flip", {id: deck.id}) }}')
+    loadCard()
+  }
+
+  async function answer(isRight) {
+    console.log(isRight)
+
+    const token = document
+      .querySelector('meta[name="csrf-token"]')
+      .getAttribute('content')
+
+    await fetch('{{ route("deck.next", {id: deck.id}) }}', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': token,
+      },
+      body: JSON.stringify({ right: isRight })
+    })
+
+    loadCard()
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') {
+      e.preventDefault()
+      flipCard()
+    }
+  })
+
+  loadCard()
+</script>
+
+@endcomponent

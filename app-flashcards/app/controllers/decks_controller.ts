@@ -95,6 +95,22 @@ export default class DecksController {
     return response.redirect().toRoute('deck.show', { id: deck.id })
   }
 
+  /**
+   * Delete record
+   */
+  async destroy({ params, session, response }: HttpContext) {
+    const deck = await Deck.findOrFail(params.id)
+
+    await deck.delete()
+
+    session.flash('success', 'Le deck a été supprimé avec succès !')
+
+    return response.redirect().toRoute('userDecks.index', { user_id: session.get('auth_web') })
+  }
+
+  /*
+   * Publish or depublish a deck
+   */
   async publish({ params, session, response }: HttpContext) {
     const deck = await Deck.findOrFail(params.id)
     let { title, isPublished, userId } = deck
@@ -109,20 +125,5 @@ export default class DecksController {
     )
 
     return response.redirect().back()
-
-    return response.redirect().toRoute('userDecks.index', { user_id: session.get('auth_web') })
-  }
-
-  /**
-   * Delete record
-   */
-  async destroy({ params, session, response }: HttpContext) {
-    const deck = await Deck.findOrFail(params.id)
-
-    await deck.delete()
-
-    session.flash('success', 'Le deck a été supprimé avec succès !')
-
-    return response.redirect().toRoute('userDecks.index', { user_id: session.get('auth_web') })
   }
 }
