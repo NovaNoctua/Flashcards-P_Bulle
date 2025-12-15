@@ -19,7 +19,7 @@
 <div>
   <button onclick="answer(true)">J'ai eu juste</button>
   <button onclick="answer(false)">Je me suis trompé</button>
-  <button onclick="restart()">Recommencer</button>
+  <a href="{{route('deck.play', {id: deck.id})}}">Recommencer</a>
 </div>
 
 <script>
