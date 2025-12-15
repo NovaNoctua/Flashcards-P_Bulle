@@ -10,11 +10,13 @@
   <p id="card-content"></p>
 </div>
 
+<p id="end-game"></p>
+<p id="stats"></p>
+
 <p>
   Astuce : cliquez sur la carte ou appuyez sur <strong>Espace</strong> pour la retourner
 </p>
 
-<p id="stats"></p>
 
 <div>
   <button onclick="answer(true)">J'ai eu juste</button>
@@ -35,7 +37,11 @@
     }
 
     if (data.finish) {
-      finishGame()
+      document.getElementById('progress').innerText = ''
+      document.getElementById('card-title').innerText = ''
+      document.getElementById('card-content').innerText = ''
+      document.getElementById('end-game').innerText = `Bravo vous avez terminé ce deck. Voilà votre score :`
+      document.getElementById('stats').innerHTML = `Juste : ${data.stats.right}. Faux : ${data.stats.wrong}`
       return
     }
 
@@ -51,8 +57,6 @@
       document.getElementById('card-title').innerText = 'Réponse'
       document.getElementById('card-content').innerText = data.answer
     }
-
-    document.getElementById('stats').innerHTML = `Juste : ${data.stats.right}. Faux : ${data.stats.wrong}`
   }
 
   async function flipCard() {
@@ -88,7 +92,9 @@
   })
 
   function finishGame() {
-    alert('COUCOU')
+
+
+    // alert('COUCOU')
   }
 
   loadCard()

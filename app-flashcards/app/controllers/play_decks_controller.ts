@@ -51,11 +51,11 @@ export default class PlayDecksController {
         question: card?.question,
         answer: card?.answer,
         index: game.cardIndex,
-        stats: game.stats,
       }
     } else {
       return {
         finish: true,
+        stats: game.stats,
       }
     }
   }
