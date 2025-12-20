@@ -1,24 +1,27 @@
 @eval(await auth.check())
 <header>
-  <nav id="header-nav">
-    <a href="{{route('home')}}" id="header-title">FlashCards</a>
+  <nav> <a href="{{route('home')}}" id="header-title">FlashCards</a>
     @if(!auth.isAuthenticated)
-    <a href="{{route('login')}}" class="header-link">Voir la liste de mes decks</a>
-    @else
-    <a href="{{route('userDecks.index', {user_id: session.get('auth_web')})}}" class="header-link">Voir la liste de mes
-      decks</a>
-    @end
-    <a href="{{route('deck.create')}}" class="header-link">Créer un nouveau Deck</a>
+    <div id="header-links">
+      <a href="{{route('login')}}" class="header-link">Voir la liste de mes decks</a>
+      @else
+      <a href="{{route('userDecks.index', {user_id: session.get('auth_web')})}}" class="header-link">Voir la liste de
+        mes
+        decks</a>
+      @end
+      <a href="{{route('deck.create')}}" class="header-link">Créer un nouveau Deck</a>
+    </div>
+    <div class="login-container">
+      @if(auth.isAuthenticated)
+      {{ auth.user.username }} ({{auth.user.isAdmin ? 'admin' : 'user'}})
+      <form action="{{route('auth.handleLogout')}}" method="post">
+        {{csrfField()}}
+        <button type="submit" class="btn btn-logout">Se déconnecter</button>
+      </form>
+      @else
+      <a href="{{route('login')}}" id="btn-login">Se connecter</a>
+      @endif
+    </div>
   </nav>
-  <div class="login-container">
-    @if(auth.isAuthenticated)
-    {{ auth.user.username }} ({{auth.user.isAdmin ? 'admin' : 'user'}})
-    <form action="{{route('auth.handleLogout')}}" method="post">
-      {{csrfField()}}
-      <button type="submit" class="btn btn-logout">Se déconnecter</button>
-    </form>
-    @else
-    <a href="{{route('login')}}">SE CONNECTER</a>
-    @endif
-  </div>
+
 </header>
