@@ -17,6 +17,8 @@
         <td>{{deck.title}}</td>
         <td>{{deck.isPublished ? 'Publié' : 'Privé'}}</td>
         <td id="table-actions-column">
+          <a href="{{route('deck.show', {id: deck.id})}}" class="actions-link">Voir la liste des cartes</a>
+          <a href="{{route('cards.create', {id: deck.id})}}" class="actions-link">Créer une nouvelle carte</a>
           <a href="{{route('deck.edit', {id: deck.id})}}" class="actions-link">Modifier</a>
           <form action="{{route('deck.destroy', {id: deck.id}) }}?_method=DELETE" method="POST" style="display: inline">
             {{ csrfField()}}
@@ -24,9 +26,6 @@
               Supprimer
             </button>
           </form>
-          <a href="{{route('deck.show', {id: deck.id})}}" class="actions-link">Voir la liste des cartes</a>
-          <a href="{{route('cards.create', {id: deck.id})}}" class="actions-link">Créer une nouvelle carte</a>
-          <a href="{{route('deck.play', {id: deck.id})}}" class="actions-link">Jouer</a>
           <form action="{{route('deck.publish', {id: deck.id})}}?_method=PUT" method="POST" style="display: inline">
             {{csrfField()}}
             <button type="submit" class="actions-link">{{deck.isPublished ? 'Dépublier' : 'Publier'}}</button>

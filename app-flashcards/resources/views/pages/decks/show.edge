@@ -1,7 +1,12 @@
 @component('components/layout', {title: title})
 <div id="show-page">
   <h2 class="page-title">{{data[0].title}} par {{data[0].user.username}}</h2>
-  <div id="deck-actions"> <a href="{{route('deck.play', {id: data[0].id})}}">Jouer</a>
+  <div id="deck-actions">
+    @if(data[1].length === 0)
+    <p title="Ce deck ne possède aucune carte">Jouer</p>
+    @else
+    <a href="{{route('deck.play', {id: data[0].id})}}">Jouer</a>
+    @endif
     @if(auth.isAuthenticated)
     @if(auth.user.isAdmin || auth.user.id === data[0].user.id)
     <form action="{{route('deck.publish', {id: data[0].id})}}?_method=PUT" method="POST" style="display: inline">

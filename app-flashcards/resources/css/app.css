@@ -264,6 +264,20 @@ main {
   color: #000000;
 }
 
+#deck-actions p {
+  margin: 0px 10px 15px 10px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.3);
+  cursor: not-allowed;
+}
 #deck-actions form button:hover,
 #deck-actions a:hover {
   background-color: #e4e4e7;
