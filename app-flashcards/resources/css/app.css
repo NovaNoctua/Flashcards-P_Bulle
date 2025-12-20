@@ -107,6 +107,7 @@ header nav {
 
 /* ---------- FOOTER ------------- */
 footer {
+  position: relative;
   background-color: #18181b;
   font-size: 1em;
   width: 100vw;
@@ -115,9 +116,8 @@ footer {
 }
 
 main {
-  height: 100%;
-  width: 100%;
   flex: 1;
+  width: 100%;
   align-items: center;
 }
 

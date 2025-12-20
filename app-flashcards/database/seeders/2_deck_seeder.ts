@@ -15,6 +15,226 @@ export default class extends BaseSeeder {
         userId: 1,
       },
       {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
+        title: 'Capitales du monde',
+        isPublished: true,
+        userId: 1,
+      },
+      {
         title: "Capitales d'Europe",
         isPublished: false,
         userId: 1,
