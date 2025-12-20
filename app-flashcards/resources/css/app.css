@@ -237,3 +237,82 @@ main {
 .deck-card:hover {
   background-color: #27272a;
 }
+
+/* ---------- SHOW PAGE ------------- */
+#show-page {
+  margin: 0px 50px 0px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+#deck-actions {
+  margin: 0 auto;
+}
+
+#deck-actions form button,
+#deck-actions a {
+  margin: 0px 10px 15px 10px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+#deck-actions form button:hover,
+#deck-actions a:hover {
+  background-color: #e4e4e7;
+}
+
+#table-deck-cards {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  padding-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.container-options {
+  display: inline;
+}
+
+#table-index {
+  width: 10%;
+}
+
+#table-questions {
+  width: 35%;
+}
+
+#table-answers {
+  width: 35%;
+}
+
+#table-actions {
+  width: 20%;
+}
+
+.actions-link {
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+  margin: 5px 10px;
+}
+
+.actions-link:hover {
+  background-color: #e4e4e7;
+}
