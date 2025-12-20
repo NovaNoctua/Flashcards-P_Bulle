@@ -1,7 +1,10 @@
 @component('components/layout', {title: title})
-<h2>Ajouter une carte</h2>
-<h3>Deck : {{deck.title}}</h3>
-<form action="{{route(`cards.store`, {id: deck.id})}}" method="post">
-  @include('partials/cardsForm')
-</form>
+<div class="card-form">
+  <h2 class="page-title">Ajouter une carte</h2>
+  <h3>Deck : {{deck.title}}</h3>
+  <form action="{{route(`cards.store`, {id: deck.id})}}" method="post">
+    @include('partials/cardsForm')
+  </form>
+</div>
+
 @endcomponent

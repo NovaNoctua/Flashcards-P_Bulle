@@ -11,7 +11,7 @@
       "answer": "réponse"
     },
     "messages": {
-      "email": "Veuillez renseigner une bonne adresse mail",
+      "email": "Veuillez renseigner une adresse mail valide",
       "required": "Veuillez renseigner votre {field}",
       "minLength": "Le {field} doit avoir au moins {min} caractères",
       "maxLength": "Le {field} ne peut avoir plus de {max} caractères",

@@ -1,5 +1,5 @@
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -11,87 +11,212 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #09090b;
+  color: #e4e4e7;
 }
 
 /* ---------- HEADER ------------- */
 header {
+  background-color: #18181b;
+  border-bottom: 1px solid #27272a;
+  width: 100%;
+}
+
+header nav {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #efefef;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
 }
 
-#header-nav {
+/* Links */
+.header-link,
+#btn-login,
+#header-title {
+  text-decoration: none;
+}
+
+/* Brand Title */
+#header-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-right: 2rem;
+}
+
+/* Header Navigation Links */
+#header-links {
   display: flex;
-  flex-direction: row;
+  gap: 1.5rem;
   align-items: center;
 }
 
-#header-title,
-.header-link,
-#header-btn {
-  color: black;
-  font-size: 1.5em;
-  text-decoration: none;
-  margin-right: 30px;
-}
-
-#header-title {
-  margin-left: 15px;
-  margin-right: 30px;
-  font-size: 2em;
+.header-link {
+  color: #a1a1aa;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
 .header-link:hover {
-  color: #9966cc;
+  color: #ffffff;
 }
 
-#header-btn {
-  background-color: #9966cc;
-  color: white;
-  margin-top: 15px;
-  padding: 10px 15px;
-  border: white 1px;
-  border-radius: 15px;
-  margin-bottom: 15px;
+/* Login/User Section */
+.login-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #a1a1aa;
 }
 
-#header-btn:hover {
-  background-color: white;
+/* Helper Buttons */
+#btn-login {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+#btn-login:hover {
+  background-color: #e4e4e7;
+}
+
+.btn-logout {
+  background-color: transparent;
+  border: 1px solid #3f3f46;
+  color: #e4e4e7;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
   cursor: pointer;
-  color: #9966cc;
+  font-family: inherit;
+  font-size: 0.85rem;
 }
 
-/* ------------ FOOTER ------------ */
+.btn-logout:hover {
+  background-color: #27272a;
+  border-color: #71717a;
+  color: #fff;
+}
+
+/* ---------- FOOTER ------------- */
 footer {
-  color: white;
+  background-color: #18181b;
   font-size: 1em;
   width: 100vw;
   text-align: center;
   padding: 30px 0px;
-  background-color: #9966cc;
 }
 
-/* ------------ HOMEPAGE ------------ */
 main {
+  height: 100%;
+  width: 100%;
   flex: 1;
+  align-items: center;
 }
 
-.page-title {
-  font-size: 2.2rem;
-  width: 100vw;
+/* ----- LOGIN AND REGISTER PAGE ----- */
+#form-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+  width: 100%;
+}
+
+#form-div-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.form-auth {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-title {
+  width: 30vw;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 15px 0px;
+}
+
+.input input {
+  width: 30vw;
+  border-radius: 5px;
+  padding: 10px 5px;
+  background-color: #3f3f46;
+  color: #e4e4e7;
+  border: 1px solid black;
+}
+
+.form-submit {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin: 15px 0px 5px 0px;
+  width: 100%;
+}
+
+.form-submit:hover {
+  background-color: #e4e4e7;
+}
+
+.text-danger {
+  color: rgb(244, 88, 88);
+}
+
+.form-auth p {
   text-align: center;
-  margin: 15px 0px 50px 0px;
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(106, 106, 255);
+}
+
+/* ---------- HOME PAGE ------------- */
+.page-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#home-page {
+  margin: 0px 50px 50px 0px;
+  display: flex;
+  flex-direction: column;
 }
 
 .cards {
   display: flex;
+  flex-direction: row;
+  width: 100%;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
-  width: 100%;
-  max-width: 80rem;
 }
 
 .deck-card {
@@ -99,38 +224,233 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  background-color: #9966cc;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  text-align: center;
-  border: 1px solid rgba(139, 92, 246, 0.3);
   text-decoration: none;
+  color: #e4e4e7;
+  width: 15vw;
+  height: 20vh;
+  text-align: center;
+  border: 1px solid white;
+  margin: 15px;
+  background-color: #18181b;
 }
 
 .deck-card:hover {
-  background-color: rgba(109, 40, 217, 0.4);
+  background-color: #27272a;
 }
 
-.deck-card-title {
-  font-size: 2rem;
-  font-weight: 600;
-  color: white;
-}
-
-.deck-card-user {
-  font-size: 1rem;
-  color: white;
-}
-
-/* ----------- LOGINPAGE ----------- */
-#form-div,
-#form-login {
+/* ---------- SHOW PAGE ------------- */
+#show-page {
+  margin: 0px 50px 0px 50px;
   display: flex;
   flex-direction: column;
-  width: 100vw;
+}
+
+#deck-actions {
+  margin: 0 auto;
+}
+
+#deck-actions form button,
+#deck-actions a {
+  margin: 0px 10px 15px 10px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+#deck-actions p {
+  margin: 0px 10px 15px 10px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.3);
+  cursor: not-allowed;
+}
+#deck-actions form button:hover,
+#deck-actions a:hover {
+  background-color: #e4e4e7;
+}
+
+#table-deck-cards {
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  padding-bottom: 10px;
+  font-size: 1.3rem;
+}
+
+.container-options {
+  display: inline;
+}
+
+#table-index {
+  width: 10%;
+}
+
+#table-questions {
+  width: 35%;
+}
+
+#table-answers {
+  width: 35%;
+}
+
+#table-actions {
+  width: 20%;
+}
+
+.actions-link {
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+  margin: 5px 10px;
+}
+
+.actions-link:hover {
+  background-color: #e4e4e7;
+}
+
+/* ---------- USER PAGE ------------- */
+#decks-user-page {
+  margin: 0px 50px 0px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+#table-decks {
+  width: 100%;
+}
+
+#table-deck-index {
+  width: 5%;
+}
+#table-deck-title {
+  width: 30%;
+}
+#table-deck-status {
+  width: 10%;
+}
+#table-deck-actions {
+  width: 50%;
+}
+#table-actions-column {
+  display: inline;
+}
+
+/* ---------- DECK CREATE PAGE ------------- */
+.deck-form,
+.card-form {
+  margin: 0px 50px 0px 50px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-#form-div {
-  margin-top: 100px;
+#deck-form-submit,
+#card-form-submit {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin: 15px 0px 5px 0px;
+  width: 100%;
+}
+
+#deck-form-submit:hover,
+#card-form-submit:hover {
+  background-color: #e4e4e7;
+}
+
+/* ---------- PLAY PAGE ------------- */
+#play-page {
+  margin: 0px 50px 0px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.play-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid white;
+  background-color: rgb(255, 255, 255, 0.1);
+  height: 45vh;
+  width: 60vw;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+#card-number {
+  text-align: left;
+  width: 58vw;
+  margin: 10px;
+  font-size: 1rem;
+}
+
+#card-title {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+#card-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#advices {
+  margin-bottom: 50px;
+}
+
+#play-btn {
+  display: inline;
+}
+
+.play-btn {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin: 15px 0px 5px 0px;
+  text-decoration: none;
+}
+
+.play-btn:hover {
+  background-color: #e4e4e7;
+}
+
+#stats {
+  margin-bottom: 30px;
 }

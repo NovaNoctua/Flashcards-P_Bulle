@@ -9,7 +9,7 @@ export default class extends BaseSchema {
       table.increments('id')
 
       // Attributes
-      table.string('title').notNullable().unique()
+      table.string('title').notNullable()
       table.boolean('is_published').notNullable()
       table.timestamp('created_at')
       table.timestamp('updated_at')

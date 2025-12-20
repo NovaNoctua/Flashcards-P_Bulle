@@ -1,55 +1,61 @@
 @component('components/layout', {title: title})
-<h2>{{data[0].title}} par {{data[0].user.username}}</h2>
-<a href="{{route('deck.play', {id: data[0].id})}}">Jouer</a>
-@if(auth.isAuthenticated)
-@if(auth.user.isAdmin || auth.user.id === data[0].user.id)
-<form action="{{route('deck.publish', {id: data[0].id})}}?_method=PUT" method="POST" style="display: inline">
-  {{csrfField()}}
-  <button type="submit">{{data[0].isPublished ? 'Dépublier' : 'Publier'}}</button>
-</form>
-<a href="{{route('deck.edit', {id: data[0].id})}}">Modifier le nom du deck</a>
-<a href="{{route('cards.create', {id: data[0].id})}}">Ajouter une carte</a>
-<form action="{{route('deck.destroy', {id: data[0].id}) }}?_method=DELETE" method="POST" style="display: inline">
-  {{ csrfField()}}
-  <button type="submit" style="background: none; border: none; padding: 0; cursor: pointer;">
-    DELETE
-  </button>
-</form>
-@endif
-@endif
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Question</th>
-      <th>Réponse</th>
-      @if(auth.isAuthenticated)
-      @if(auth.user.isAdmin || auth.user.id === data[0].user.id)
-      <th>Action</th>
-      @endif
-      @endif
-    </tr>
-  </thead>
-  <tbody>
-    @each((card, index) in data[1])
-    <tr>
-      <td>{{index + 1}}</td>
-      <td>{{card.question}}</td>
-      <td>{{card.answer}}</td>
-      @if(auth.isAuthenticated)
-      @if(auth.user.isAdmin || auth.user.id === data[0].user.id)
-      <td class="container-options"><a
-          href="{{{route('cards.edit', {deck_id: data[0].id, card_id: data[1][index].id})}}}">Modifier</a>
-        <form action="{{route('cards.destroy', {deck_id: data[0].id, card_id: data[1][index].id})}}?_method=DELETE"
-          method="POST">
-          {{csrfField()}}
-          <button type="submit">Supprimer</button>
-        </form>
-      </td>
-      @endif
-      @endif
-    </tr>
-    @end
-  </tbody>
-</table>
+<div id="show-page">
+  <h2 class="page-title">{{data[0].title}} par {{data[0].user.username}}</h2>
+  <div id="deck-actions">
+    @if(data[1].length === 0)
+    <p title="Ce deck ne possède aucune carte">Jouer</p>
+    @else
+    <a href="{{route('deck.play', {id: data[0].id})}}">Jouer</a>
+    @endif
+    @if(auth.isAuthenticated)
+    @if(auth.user.isAdmin || auth.user.id === data[0].user.id)
+    <form action="{{route('deck.publish', {id: data[0].id})}}?_method=PUT" method="POST" style="display: inline">
+      {{csrfField()}}
+      <button type="submit">{{data[0].isPublished ? 'Dépublier' : 'Publier'}}</button>
+    </form>
+    <a href="{{route('deck.edit', {id: data[0].id})}}">Modifier le nom du deck</a>
+    <a href="{{route('cards.create', {id: data[0].id})}}">Ajouter une carte</a>
+    <form action="{{route('deck.destroy', {id: data[0].id}) }}?_method=DELETE" method="POST" style="display: inline">
+      {{ csrfField()}}
+      <button type="submit">
+        Supprimer
+      </button>
+    </form>
+    @endif
+    @endif
+  </div>
+  <table id="table-deck-cards">
+    <thead>
+      <tr>
+        <th id="table-index">#</th>
+        <th id="table-questions">Question</th>
+        <th id="table-answers">Réponse</th>
+        @if(auth.isAuthenticated && auth.user.isAdmin || auth.user.id === data[0].user.id)
+        <th id="table-actions">Action</th>
+        @endif
+      </tr>
+    </thead>
+    <tbody>
+      @each((card, index) in data[1])
+      <tr>
+        <td>{{index + 1}}</td>
+        <td>{{card.question}}</td>
+        <td>{{card.answer}}</td>
+        @if(auth.isAuthenticated && auth.user.isAdmin || auth.user.id === data[0].user.id)
+        <td class="container-options"><a
+            href="{{{route('cards.edit', {deck_id: data[0].id, card_id: data[1][index].id})}}}"
+            class="actions-link">Modifier</a>
+          <form action="{{route('cards.destroy', {deck_id: data[0].id, card_id: data[1][index].id})}}?_method=DELETE"
+            method="POST" style="display: inline">
+            {{csrfField()}}
+            <button type="submit" class="actions-link">Supprimer</button>
+          </form>
+        </td>
+        @endif
+      </tr>
+      @end
+    </tbody>
+  </table>
+</div>
+
 @endcomponent

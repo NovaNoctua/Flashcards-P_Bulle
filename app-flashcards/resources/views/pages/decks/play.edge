@@ -1,28 +1,36 @@
 @component('components/layout', { title: title })
-<meta name="csrf-token" content="{{ csrfToken }}">
+<div id="play-page">
+  <meta name="csrf-token" content="{{ csrfToken }}">
 
-<h2>{{ deck.title }}</h2>
+  <h2 class="page-title">{{ deck.title }}</h2>
 
-<p id="progress">Chargement…</p>
 
-<div id="card" onclick="flipCard()">
-  <h3 id="card-title"></h3>
-  <p id="card-content"></p>
+  <p id="progress">Chargement…</p>
+
+  <div id="deck" class="play-card" onclick="flipCard()">
+    <div>
+      <p id="card-number"></p>
+      <h3 id="card-title"></h3>
+    </div>
+
+    <p id="card-content"></p>
+  </div>
+
+  <p id="end-game"></p>
+  <p id="stats"></p>
+
+  <p id="advices">
+    Astuce : cliquez sur la carte ou appuyez sur <strong>Espace</strong> pour la retourner
+  </p>
+
+
+  <div id="play-btn">
+    <button onclick="answer(true)" class="play-btn">J'ai eu juste</button>
+    <button onclick="answer(false)" class="play-btn">Je me suis trompé</button>
+    <a href="{{route('deck.play', {id: deck.id})}}" class="play-btn">Recommencer</a>
+  </div>
 </div>
 
-<p id="end-game"></p>
-<p id="stats"></p>
-
-<p>
-  Astuce : cliquez sur la carte ou appuyez sur <strong>Espace</strong> pour la retourner
-</p>
-
-
-<div>
-  <button onclick="answer(true)">J'ai eu juste</button>
-  <button onclick="answer(false)">Je me suis trompé</button>
-  <a href="{{route('deck.play', {id: deck.id})}}">Recommencer</a>
-</div>
 
 <script>
   let currentSide = 'question'
@@ -38,17 +46,23 @@
 
     if (data.finish) {
       document.getElementById('progress').innerText = ''
+      document.getElementById('card-number').innerText = ''
       document.getElementById('card-title').innerText = ''
       document.getElementById('card-content').innerText = ''
+      document.getElementById('advices').innerHTML = /*html*/`
+        <a href = "{{route('deck.play', {id: deck.id})}}" class="play-btn"> Recommencer</a>`
+      document.getElementById('play-btn').innerText = ''
       document.getElementById('end-game').innerText = `Bravo vous avez terminé ce deck. Voilà votre score :`
       document.getElementById('stats').innerHTML = `Juste : ${data.stats.right}. Faux : ${data.stats.wrong}`
+      document.getElementById('deck').classList.remove('play-card')
       return
     }
 
     currentSide = data.side
 
     document.getElementById('progress').innerText =
-      `Carte ${data.index + 1}`
+      ''
+    document.getElementById('card-number').innerText = `Carte ${data.index + 1}`
 
     if (data.side === 'question') {
       document.getElementById('card-title').innerText = 'Question'
@@ -88,13 +102,6 @@
       flipCard()
     }
   })
-
-  function finishGame() {
-
-
-    // alert('COUCOU')
-  }
-
   loadCard()
 </script>
 
