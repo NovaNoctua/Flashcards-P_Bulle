@@ -357,3 +357,26 @@ th {
 #table-actions-column {
   display: inline;
 }
+
+/* ---------- DECK CREATE PAGE ------------- */
+.deck-form,
+.card-form {
+  margin: 0px 50px 0px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#deck-form-submit,
+#card-form-submit {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin: 15px 0px 5px 0px;
+  width: 100%;
+}

@@ -35,7 +35,7 @@ export default class CardsController {
   }
 
   // Edit a card
-  async update({ params, request, response }: HttpContext) {
+  async update({ params, request, response, session }: HttpContext) {
     // Information of the edited card
     const { question, answer } = await request.validateUsing(cardValidator)
     const deckId = params.deck_id
@@ -48,7 +48,7 @@ export default class CardsController {
       await card.merge({ question, answer, deckId }).save()
     }
 
-    sessionStorage.flash('success', 'La carte a été modifiée avec succès !')
+    session.flash('success', 'La carte a été modifiée avec succès !')
 
     // Redirect
     return response.redirect().toRoute('deck.show', { id: deckId })
