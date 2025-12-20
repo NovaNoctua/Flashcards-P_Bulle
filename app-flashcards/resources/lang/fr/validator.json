@@ -5,13 +5,20 @@
       "password": "mot de passe",
       "firstname": "prénom",
       "lastname": "nom de famille",
-      "email": "adresse mail"
+      "email": "adresse mail",
+      "title": "titre d'un deck",
+      "question": "question",
+      "answer": "réponse"
     },
     "messages": {
       "email": "Veuillez renseigner une bonne adresse mail",
       "required": "Veuillez renseigner votre {field}",
       "minLength": "Le {field} doit avoir au moins {min} caractères",
       "maxLength": "Le {field} ne peut avoir plus de {max} caractères",
+      "question.minLength": "La {field} doit avoir au moins {min} caractères",
+      "question.maxLength": "Le {field} ne peut avoir plus de {max} caractères",
+      "answer.minLength": "La {field} doit avoir au moins {min} caractères",
+      "answer.maxLength": "La {field} ne peut avoir plus de {max} caractères",
       "username.database.unique": "Ce nom d'utilisateur est déjà utilisé",
       "email.database.unique": "Cette addresse email est déjà utilisée",
       "confirmed": "Les mots de passe ne correspondent pas"
