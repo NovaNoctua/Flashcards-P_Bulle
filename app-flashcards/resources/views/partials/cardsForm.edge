@@ -1,10 +1,9 @@
 {{csrfField()}}
 <div class="field">
-  @!component('components/input', {name: 'question', label: 'Question', value: old('question') || card ? card.question
-  : ''})
+  @!component('components/input', {name: 'question', label: 'Question', value: old('question') || card?.question || ''})
 </div>
 <div class="field">
-  @!component('components/input', { name: 'answer', label: 'Réponse', value: old('answer') || card ? card.answer : ''
+  @!component('components/input', { name: 'answer', label: 'Réponse', value: old('answer') || card?.answer || ''
   })
 </div>
 

@@ -20,12 +20,14 @@ export default class CardsController {
   /**
    * Handle form submission for the create action
    */
-  async store({ request, response, params }: HttpContext) {
+  async store({ request, response, params, session }: HttpContext) {
     const { question, answer } = await request.validateUsing(cardValidator)
 
     const deckId = params.id
 
     await Card.create({ deckId, question, answer })
+
+    session.flash('success', 'La nouvelle carte a été ajouté avec succès !')
 
     return response.redirect().toRoute('deck.show', { id: deckId })
   }
