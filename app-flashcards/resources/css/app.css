@@ -12,7 +12,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
   background-color: #09090b;
-  color: #a1a1aa;
+  color: #e4e4e7;
 }
 
 /* ---------- HEADER ------------- */
@@ -118,4 +118,78 @@ main {
   flex: 1;
 }
 
-/* ---------- LOGIN PAGE ------------- */
+/* ----- LOGIN AND REGISTER PAGE ----- */
+#form-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+  width: 100%;
+}
+
+#form-div-register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.form-auth {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-title {
+  width: 30vw;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 15px 0px;
+}
+
+.input input {
+  width: 30vw;
+  border-radius: 5px;
+  padding: 10px 5px;
+  background-color: #3f3f46;
+  color: #e4e4e7;
+  border: 1px solid black;
+}
+
+.form-submit {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin: 15px 0px 5px 0px;
+  width: 100%;
+}
+
+.form-submit:hover {
+  background-color: #e4e4e7;
+}
+
+.text-danger {
+  color: rgb(244, 88, 88);
+}
+
+.form-auth p {
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(106, 106, 255);
+}

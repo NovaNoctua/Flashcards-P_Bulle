@@ -1,13 +1,13 @@
 @component('components/layout', { title: 'Se connecter' })
 <div id="form-div">
   <h2 class="form-title">Se connecter</h2>
-  <form action="{{route('auth.handleLogin') }}" method="post" id="form-login">
+  <form action="{{route('auth.handleLogin') }}" method="post" class="form-auth">
     {{csrfField()}}
-    @!component('components/input', {name: 'username', label: "Nom d'utilisateur"})
+    @!component('components/input', {name: 'username', label: "Nom d'utilisateur", type: 'text'})
     @!component('components/input', {name: 'password', label: 'Mot de passe', type: 'password'})
-    <button type="submit" class="btn btn-logic">Se connecter</button>
+    <button type="submit" class="form-submit">Se connecter</button>
   </form>
-  <p>Vous ne possédez aucun compte ? <a href="{{route('register')}}">Créer un compte</a></p>
+  <p>Vous ne possédez aucun compte ? <a href="{{route('register')}}" class="link">Créer un compte</a></p>
 </div>
 
 @endcomponent
