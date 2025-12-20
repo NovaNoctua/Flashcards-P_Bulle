@@ -15,14 +15,15 @@ export default class Deck extends BaseModel {
   @column()
   declare isPublished: boolean
 
-  @column()
-  declare userId: number
-
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
+
+  // Foreign keys
+  @column()
+  declare userId: number
 
   // Relations
   @belongsTo(() => User)

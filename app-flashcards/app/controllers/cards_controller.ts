@@ -4,42 +4,29 @@ import { cardValidator } from '#validators/card'
 import type { HttpContext } from '@adonisjs/core/http'
 
 export default class CardsController {
-  /**
-   * Display a list of resource
-   */
-  async index({}: HttpContext) {}
-
-  /**
-   * Display form to create a new record
-   */
+  // Redirect to the card add form page
   async create({ view, params }: HttpContext) {
     const deck = await Deck.findOrFail(params.id)
     return view.render('pages/cards/create', { title: 'Ajouter des cartes', deck })
   }
 
-  /**
-   * Handle form submission for the create action
-   */
+  // Add a card in a deck
   async store({ request, response, params, session }: HttpContext) {
+    // Information of the card
     const { question, answer } = await request.validateUsing(cardValidator)
-
     const deckId = params.id
 
+    // Create card
     await Card.create({ deckId, question, answer })
 
+    // Successful message
     session.flash('success', 'La nouvelle carte a été ajouté avec succès !')
 
+    // Redirect
     return response.redirect().toRoute('deck.show', { id: deckId })
   }
 
-  /**
-   * Show individual record
-   */
-  async show({}: HttpContext) {}
-
-  /**
-   * Edit individual record
-   */
+  // Edit form page
   async edit({ params, view }: HttpContext) {
     const card = await Card.findOrFail(params.card_id)
     const deck = await Deck.findOrFail(params.deck_id)
@@ -47,33 +34,38 @@ export default class CardsController {
     return view.render('pages/cards/edit.edge', { card, deck })
   }
 
-  /**
-   * Handle form submission for the edit action
-   */
+  // Edit a card
   async update({ params, request, response }: HttpContext) {
+    // Information of the edited card
     const { question, answer } = await request.validateUsing(cardValidator)
-
     const deckId = params.deck_id
 
+    // Card to edit
     const card = await Card.findOrFail(params.card_id)
 
+    // Edit the card
     if (card) {
       await card.merge({ question, answer, deckId }).save()
     }
 
+    sessionStorage.flash('success', 'La carte a été modifiée avec succès !')
+
+    // Redirect
     return response.redirect().toRoute('deck.show', { id: deckId })
   }
 
-  /**
-   * Delete record
-   */
+  // Delete a card
   async destroy({ params, session, response }: HttpContext) {
+    // Find the right card
     const card = await Card.findOrFail(params.card_id)
 
+    // Delete the card
     await card.delete()
 
+    // Successful message
     session.flash('success', 'La carte a été supprimée avec succès !')
 
+    // Redirect
     return response.redirect().toRoute('deck.show', { id: params.deck_id })
   }
 }

@@ -4,7 +4,7 @@ import Deck from './deck.js'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 
 export default class Card extends BaseModel {
-  // Attributs
+  // Attributes
   @column({ isPrimary: true })
   declare id: number
 
@@ -14,14 +14,15 @@ export default class Card extends BaseModel {
   @column()
   declare answer: string
 
-  @column()
-  declare deckId: number
-
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
+
+  // Foreign keys
+  @column()
+  declare deckId: number
 
   // Relations
   @belongsTo(() => Deck)
