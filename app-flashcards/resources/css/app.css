@@ -380,3 +380,77 @@ th {
   margin: 15px 0px 5px 0px;
   width: 100%;
 }
+
+#deck-form-submit:hover,
+#card-form-submit:hover {
+  background-color: #e4e4e7;
+}
+
+/* ---------- PLAY PAGE ------------- */
+#play-page {
+  margin: 0px 50px 0px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.play-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid white;
+  background-color: rgb(255, 255, 255, 0.1);
+  height: 45vh;
+  width: 60vw;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+#card-number {
+  text-align: left;
+  width: 58vw;
+  margin: 10px;
+  font-size: 1rem;
+}
+
+#card-title {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+#card-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#advices {
+  margin-bottom: 50px;
+}
+
+#play-btn {
+  display: inline;
+}
+
+.play-btn {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin: 15px 0px 5px 0px;
+  text-decoration: none;
+}
+
+.play-btn:hover {
+  background-color: #e4e4e7;
+}
+
+#stats {
+  margin-bottom: 30px;
+}
