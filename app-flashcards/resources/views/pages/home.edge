@@ -1,13 +1,13 @@
 @component('components/layout', { title: 'Accueil' })
-<h2 class="page-title">Liste des decks publiés</h2>
-<div class="cards">
-  @each((deck, index) in decks)
-  <a href="{{ route('deck.show', {id: deck.id}) }}" class="deck-card">
-    <h2 class="deck-card-title">{{deck.title}}</h2>
-    <p class="deck-card-user">{{deck.user.username}}</p>
-  </a>
-  @end
-
+<div id="home-page">
+  <h2 class="page-title">Liste des decks publiés</h2>
+  <div class="cards">
+    @each((deck, index) in decks)
+    <a href="{{ route('deck.show', {id: deck.id}) }}" class="deck-card">
+      <h2 class="deck-card-title">{{deck.title}}</h2>
+      <p class="deck-card-user">{{deck.user.username}}</p>
+    </a>
+    @end
+  </div>
 </div>
-
 @endcomponent
