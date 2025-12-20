@@ -1,39 +1,41 @@
 @component('components/layout', {title: title})
-<h2 class="page-title">Liste des decks</h2>
+<div id="decks-user-page">
+  <h2 class="page-title">Liste des decks</h2>
+  <table id="table-decks">
+    <thead>
+      <tr>
+        <th id="table-deck-index">#</th>
+        <th id="table-deck-title">Titre</th>
+        <th id="table-deck-status">Statut</th>
+        <th id="table-deck-actions">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @each((deck, index) in decks)
+      <tr>
+        <td>{{index + 1}}</td>
+        <td>{{deck.title}}</td>
+        <td>{{deck.isPublished ? 'Publié' : 'Privé'}}</td>
+        <td id="table-actions-column">
+          <a href="{{route('deck.edit', {id: deck.id})}}" class="actions-link">Modifier</a>
+          <form action="{{route('deck.destroy', {id: deck.id}) }}?_method=DELETE" method="POST" style="display: inline">
+            {{ csrfField()}}
+            <button type="submit" class="actions-link">
+              Supprimer
+            </button>
+          </form>
+          <a href="{{route('deck.show', {id: deck.id})}}" class="actions-link">Voir la liste des cartes</a>
+          <a href="{{route('cards.create', {id: deck.id})}}" class="actions-link">Créer une nouvelle carte</a>
+          <a href="{{route('deck.play', {id: deck.id})}}" class="actions-link">Jouer</a>
+          <form action="{{route('deck.publish', {id: deck.id})}}?_method=PUT" method="POST" style="display: inline">
+            {{csrfField()}}
+            <button type="submit" class="actions-link">{{deck.isPublished ? 'Dépublier' : 'Publier'}}</button>
+          </form>
+        </td>
+      </tr>
+      @end
+    </tbody>
+  </table>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Titre</th>
-      <th>Statut</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    @each((deck, index) in decks)
-    <tr>
-      <td>{{index + 1}}</td>
-      <td>{{deck.title}}</td>
-      <td>{{deck.isPublished ? 'Publié' : 'Privé'}}</td>
-      <td>
-        <a href="{{route('deck.edit', {id: deck.id})}}">Modifier</a>
-        <form action="{{route('deck.destroy', {id: deck.id}) }}?_method=DELETE" method="POST" style="display: inline">
-          {{ csrfField()}}
-          <button type="submit">
-            SUPPRIMER
-          </button>
-        </form>
-        <a href="{{route('deck.show', {id: deck.id})}}">Voir la liste des cartes</a>
-        <a href="{{route('cards.create', {id: deck.id})}}">Créer une nouvelle carte</a>
-        <a href="{{route('deck.play', {id: deck.id})}}">Jouer</a>
-        <form action="{{route('deck.publish', {id: deck.id})}}?_method=PUT" method="POST">
-          {{csrfField()}}
-          <button type="submit">{{deck.isPublished ? 'Dépublier' : 'Publier'}}</button>
-        </form>
-      </td>
-    </tr>
-    @end
-  </tbody>
-</table>
 @endcomponent

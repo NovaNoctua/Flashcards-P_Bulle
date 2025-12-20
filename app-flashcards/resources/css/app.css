@@ -316,3 +316,30 @@ th {
 .actions-link:hover {
   background-color: #e4e4e7;
 }
+
+/* ---------- USER PAGE ------------- */
+#decks-user-page {
+  margin: 0px 50px 0px 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+#table-decks {
+  width: 100%;
+}
+
+#table-deck-index {
+  width: 5%;
+}
+#table-deck-title {
+  width: 30%;
+}
+#table-deck-status {
+  width: 10%;
+}
+#table-deck-actions {
+  width: 50%;
+}
+#table-actions-column {
+  display: inline;
+}
