@@ -24,7 +24,6 @@ export const registerValidator = vine.compile(
         const mail = await query.from('users').where('email', field).first()
         return !mail
       }),
-    // https://vinejs.dev/docs/types/string#confirmed
     password: vine.string().minLength(8).maxLength(256).confirmed(),
     firstname: vine.string().minLength(2).maxLength(50),
     lastname: vine.string().minLength(2).maxLength(50),

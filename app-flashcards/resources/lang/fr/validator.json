@@ -1,0 +1,20 @@
+{
+  "shared": {
+    "fields": {
+      "username": "nom d'utilisateur",
+      "password": "mot de passe",
+      "firstname": "prénom",
+      "lastname": "nom de famille",
+      "email": "adresse mail"
+    },
+    "messages": {
+      "email": "Veuillez renseigner une bonne adresse mail",
+      "required": "Veuillez renseigner votre {field}",
+      "minLength": "Le {field} doit avoir au moins {min} caractères",
+      "maxLength": "Le {field} ne peut avoir plus de {max} caractères",
+      "username.database.unique": "Ce nom d'utilisateur est déjà utilisé",
+      "email.database.unique": "Cette addresse email est déjà utilisée",
+      "confirmed": "Les mots de passe ne correspondent pas"
+    }
+  }
+}

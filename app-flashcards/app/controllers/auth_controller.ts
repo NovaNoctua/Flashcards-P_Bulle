@@ -21,9 +21,13 @@ export default class AuthController {
     return response.redirect().toRoute('home')
   }
 
-  async handleRegister({ request, session, response }: HttpContext) {
-    const { username, email, password, firstname, lastname } =
-      await request.validateUsing(registerValidator)
+  async handleRegister({ request, session, response, i18n }: HttpContext) {
+    const { username, email, password, firstname, lastname } = await request.validateUsing(
+      registerValidator,
+      {
+        messagesProvider: i18n.createMessagesProvider(),
+      }
+    )
 
     const profilePicturePath = './'
     const isAdmin = false
