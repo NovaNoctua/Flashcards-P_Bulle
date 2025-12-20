@@ -60,13 +60,11 @@
   }
 
   async function flipCard() {
-    console.log('flipping')
     await fetch('{{ route("deck.flip", {id: deck.id}) }}')
     loadCard()
   }
 
   async function answer(isRight) {
-    console.log(isRight)
 
     const token = document
       .querySelector('meta[name="csrf-token"]')

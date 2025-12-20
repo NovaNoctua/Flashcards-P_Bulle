@@ -66,7 +66,6 @@ export default class PlayDecksController {
 
     game.side = game.side === 'question' ? 'answer' : 'question'
     session.put('game', game)
-    console.log(session.get('game.cardIndex'))
 
     return { side: game.side }
   }
