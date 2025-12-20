@@ -116,6 +116,12 @@ router
   .as('login')
 router.post('/login', [AuthController, 'handleLogin']).as('auth.handleLogin')
 router.post('/logout', [AuthController, 'handleLogout']).as('auth.handleLogout')
+router
+  .get('/register', ({ view }: HttpContext) => {
+    return view.render('pages/register', { title: 'Créer un compte' })
+  })
+  .as('register')
+router.post('/register', [AuthController, 'handleRegister']).as('auth.handleRegister')
 
 // ERRORS
 // router

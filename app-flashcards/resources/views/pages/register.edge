@@ -1,35 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Register</title>
-</head>
-
-<body>
-  <form action="http://localhost:3333/users/register" method="POST">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username">
-
-    <label for="email">Email</label>
-    <input type="text" id="email" name="email">
-
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password">
-
-    <label for="firstname">First name</label>
-    <input type="text" id="firstname" name="firstname">
-
-    <label for="lastname">Last name</label>
-    <input type="text" id="lastname" name="lastname">
-
-    <label for="profilePicturePath">Profile Picture</label>
-    <input type="text" id="profilePicturePath" name="profilePicturePath">
-
-    <input type="submit" value="Submit">
+@component('components/layout', { title: 'Créer un compte' })
+<div id="form-div">
+  <h2 class="form-title">Créer un compte</h2>
+  <form action="{{route('auth.handleRegister') }}" method="post" id="form-register">
+    {{csrfField()}}
+    @!component('components/input', {name: 'firstname', label: "Prénom"})
+    @!component('components/input', {name: 'lastname', label: "Nom de famille"})
+    @!component('components/input', {name: 'username', label: "Nom d'utilisateur"})
+    @!component('components/input', {name: 'email', label: "Adresse mail", type: 'email'})
+    @!component('components/input', {name: 'password', label: "Mot de passe", type: 'password'})
+    <button type="submit" class="btn btn-logic">Se connecter</button>
   </form>
-</body>
+</div>
 
-</html>
+@endcomponent

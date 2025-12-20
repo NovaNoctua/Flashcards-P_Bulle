@@ -1,5 +1,5 @@
 import User from '#models/user'
-import { loginValidator } from '#validators/auth'
+import { loginValidator, registerValidator } from '#validators/auth'
 import { HttpContext } from '@adonisjs/core/http'
 
 export default class AuthController {
@@ -19,5 +19,27 @@ export default class AuthController {
     await auth.use('web').logout()
     session.flash('success', "L'utilisateur s'est déconnecté avec succès")
     return response.redirect().toRoute('home')
+  }
+
+  async handleRegister({ request, session, response }: HttpContext) {
+    const { username, email, password, firstname, lastname } =
+      await request.validateUsing(registerValidator)
+
+    const profilePicturePath = './'
+    const isAdmin = false
+
+    await User.create({
+      username,
+      email,
+      password,
+      firstname,
+      lastname,
+      profilePicturePath,
+      isAdmin,
+    })
+
+    session.flash('success', 'Compte utilisateur créé avec succès.')
+
+    return response.redirect().toRoute('login')
   }
 }
