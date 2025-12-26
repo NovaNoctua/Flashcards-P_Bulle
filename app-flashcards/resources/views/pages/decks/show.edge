@@ -30,8 +30,10 @@
         <th id="table-index">#</th>
         <th id="table-questions">Question</th>
         <th id="table-answers">Réponse</th>
-        @if(auth.isAuthenticated && auth.user.isAdmin || auth.user.id === data[0].user.id)
+        @if(auth.isAuthenticated)
+        @if(auth.user.isAdmin || auth.user.id === data[0].user.id)
         <th id="table-actions">Action</th>
+        @endif
         @endif
       </tr>
     </thead>
@@ -41,7 +43,8 @@
         <td>{{index + 1}}</td>
         <td>{{card.question}}</td>
         <td>{{card.answer}}</td>
-        @if(auth.isAuthenticated && auth.user.isAdmin || auth.user.id === data[0].user.id)
+        @if(auth.isAuthenticated)
+        @if(auth.user.isAdmin || auth.user.id === data[0].user.id)
         <td class="container-options"><a
             href="{{{route('cards.edit', {deck_id: data[0].id, card_id: data[1][index].id})}}}"
             class="actions-link">Modifier</a>
@@ -51,6 +54,7 @@
             <button type="submit" class="actions-link">Supprimer</button>
           </form>
         </td>
+        @endif
         @endif
       </tr>
       @end
