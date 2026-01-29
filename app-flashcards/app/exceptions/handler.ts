@@ -1,5 +1,4 @@
 import app from '@adonisjs/core/services/app'
-import { errors } from '@adonisjs/core'
 import { HttpContext, ExceptionHandler } from '@adonisjs/core/http'
 import type { StatusPageRange, StatusPageRenderer } from '@adonisjs/core/types/http'
 
