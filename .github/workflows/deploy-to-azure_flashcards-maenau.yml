@@ -30,6 +30,7 @@ jobs:
           npm run build
           cp .env.example build/.env
           cd build
+          npm ci --omit="dev"
           node generate:key
           cd ../..
           mkdir build
