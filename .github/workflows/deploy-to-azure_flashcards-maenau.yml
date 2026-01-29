@@ -29,7 +29,7 @@ jobs:
           npm install
           npm run build
           cp .env.example .env
-          node generate:key
+          node ace generate:key
           cp .env build/.env
           cd build
           npm ci --omit="dev"
