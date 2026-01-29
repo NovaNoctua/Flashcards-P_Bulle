@@ -36,7 +36,6 @@ jobs:
           cd ..
           cd ..
           mkdir build
-          cd build
           cp -R docker_mysql build
           cp -R app-flashcards/build build
 
