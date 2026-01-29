@@ -33,7 +33,8 @@ jobs:
           cp .env build/.env
           cd build
           npm ci --omit="dev"
-          cd ../..
+          cd ..
+          cd ..
           mkdir build
           cd build
           cp -R docker_mysql build
