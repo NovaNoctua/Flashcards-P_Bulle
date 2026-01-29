@@ -1,4 +1,4 @@
-name: Deploy AdonisJS (MySQL + Edge) to Azure
+name: Deploy AdonisJS (MySQL) to Azure
 
 on:
   push:
@@ -11,38 +11,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout code
       - uses: actions/checkout@v4
 
-      # 2. Setup Node
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 24
 
-      # 3. Install dependencies
       - name: Install dependencies
         run: |
           cd app-flashcards
           npm install
 
-      # 4. Build AdonisJS
       - name: Build Adonis
         run: |
           cd app-flashcards
           npm run build
 
-      # 5. Prepare deploy folder
       - name: Prepare deploy folder
         run: |
           mkdir deploy
-          cd app-flashcards
-          cp -R build ../deploy/build
-          cp package.json ../deploy/
-          cp package-lock.json ../deploy/
-          cp -R resources/views ../deploy/resources/views
+          cp -R app-flashcards/build deploy/build
+          cp app-flashcards/package.json deploy/
+          cp app-flashcards/package-lock.json deploy/
 
-      # 6. Deploy to Azure
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         with:
