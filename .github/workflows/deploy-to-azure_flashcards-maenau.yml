@@ -28,10 +28,11 @@ jobs:
           cd app-flashcards
           npm install
           npm run build
-          cp .env.example build/.env
+          cp .env.example .env
+          node generate:key
+          cp .env build/.env
           cd build
           npm ci --omit="dev"
-          node generate:key
           cd ../..
           mkdir build
           cd build
