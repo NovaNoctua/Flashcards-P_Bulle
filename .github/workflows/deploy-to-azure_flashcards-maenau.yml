@@ -18,15 +18,18 @@ jobs:
           node-version: "20.x" # Utilise la v20 LTS, plus stable pour Adonis 6
 
       - name: Install dependencies
-        run: npm ci # 'ci' est plus rapide et propre en CI/CD que 'install'
+        run: |
+          cd app-flashcards
+          npm ci
 
       - name: Build project
-        run: node ace build # Génère le dossier ./build
+        run: |
+          cd app-flashcards
+          node ace build
 
       - name: Prepare Deployment Folder
         run: |
-          # 1. On entre dans le dossier build
-          # 2. On installe uniquement les dépendances de prod à l'intérieur
+          cd app-flashcards
           cd build
           npm ci --omit=dev
 
@@ -36,7 +39,7 @@ jobs:
           name: node-app
           # On n'envoie que le CONTENU du dossier build
           # Ainsi, bin/server.js sera à la racine de wwwroot sur Azure
-          path: build/
+          path: app-flashcards/build/
 
   deploy:
     runs-on: ubuntu-latest
