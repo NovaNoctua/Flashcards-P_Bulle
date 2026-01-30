@@ -37,9 +37,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          # On n'envoie que le CONTENU du dossier build
-          # Ainsi, bin/server.js sera à la racine de wwwroot sur Azure
           path: app-flashcards/build/
+          include-hidden-files: true
 
   deploy:
     runs-on: ubuntu-latest
