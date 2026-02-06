@@ -25,7 +25,7 @@ jobs:
       - name: Build project
         run: |
           cd app-flashcards
-          node ace build
+          npm run build
 
       - name: Prepare Deployment Folder
         run: |
