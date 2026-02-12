@@ -60,6 +60,10 @@ COPY --chown=node:node --from=build /home/node/app/build .
 
 # Expose port
 EXPOSE 80
+EXPOSE 443
+
+# Copy certificates
+COPY --chown=node:node ./certs ./certs
 
 # Run the command to start the server using "dumb-init"
 CMD ["sh", "-c", "node ace migration:run --force && exec dumb-init node bin/server.js"]

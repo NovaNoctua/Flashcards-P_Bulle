@@ -8,9 +8,12 @@
 | command to run this file and monitor file changes
 |
 */
-
 import 'reflect-metadata'
 import { Ignitor, prettyPrintError } from '@adonisjs/core'
+import { createServer } from 'node:https'
+import fs from 'node:fs'
+import { join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 /**
  * URL to the application root. AdonisJS need it to resolve
@@ -29,6 +32,7 @@ const IMPORTER = (filePath: string) => {
   return import(filePath)
 }
 
+
 new Ignitor(APP_ROOT, { importer: IMPORTER })
   .tap((app) => {
     app.booting(async () => {
@@ -38,8 +42,17 @@ new Ignitor(APP_ROOT, { importer: IMPORTER })
     app.listenIf(app.managedByPm2, 'SIGINT', () => app.terminate())
   })
   .httpServer()
-  .start()
+  .start((handle) => {
+    return createServer(
+      {
+        key: fs.readFileSync(join(fileURLToPath(APP_ROOT), 'certs/server.key')),
+        cert: fs.readFileSync(join(fileURLToPath(APP_ROOT), 'certs/server.crt')),
+      },
+      handle
+    )
+  })
   .catch((error) => {
     process.exitCode = 1
     prettyPrintError(error)
   })
+
